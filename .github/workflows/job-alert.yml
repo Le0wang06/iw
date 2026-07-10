@@ -25,7 +25,7 @@ jobs:
         id: diff_main
         run: |
           if [ -f snapshots/previous-main.md ]; then
-            NEW=$(diff snapshots/previous-main.md current-main.md | grep '^>' | grep '|' | sed 's/^> //' || true)
+            NEW=$(diff snapshots/previous-main.md current-main.md | grep '^>' | grep 'simplify.jobs/c/' | sed 's/^> //' || true)
           else
             NEW=""
           fi
@@ -37,7 +37,7 @@ jobs:
         id: diff_offseason
         run: |
           if [ -f snapshots/previous-offseason.md ]; then
-            NEW=$(diff snapshots/previous-offseason.md current-offseason.md | grep '^>' | grep '|' | sed 's/^> //' || true)
+            NEW=$(diff snapshots/previous-offseason.md current-offseason.md | grep '^>' | grep 'simplify.jobs/c/' | sed 's/^> //' || true)
           else
             NEW=""
           fi
