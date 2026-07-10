@@ -1,0 +1,77 @@
+name: Internship Board Watcher
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'   # every 30 minutes
+  workflow_dispatch:          # lets you trigger it manually to test
+
+permissions:
+  contents: write
+
+jobs:
+  check-boards:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Fetch latest versions of both boards
+        run: |
+          mkdir -p snapshots
+          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/README.md -o current-main.md
+          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/README-Off-Season.md -o current-offseason.md
+
+      - name: Diff main board
+        id: diff_main
+        run: |
+          if [ -f snapshots/previous-main.md ]; then
+            NEW=$(diff snapshots/previous-main.md current-main.md | grep '^>' | grep '|' | sed 's/^> //' || true)
+          else
+            NEW=""
+          fi
+          echo "new<<EOF" >> $GITHUB_OUTPUT
+          echo "$NEW" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Diff off-season board
+        id: diff_offseason
+        run: |
+          if [ -f snapshots/previous-offseason.md ]; then
+            NEW=$(diff snapshots/previous-offseason.md current-offseason.md | grep '^>' | grep '|' | sed 's/^> //' || true)
+          else
+            NEW=""
+          fi
+          echo "new<<EOF" >> $GITHUB_OUTPUT
+          echo "$NEW" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Send email if new rows found
+        if: steps.diff_main.outputs.new != '' || steps.diff_offseason.outputs.new != ''
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "New internship listing(s) posted"
+          to: ${{ secrets.MAIL_TO }}
+          from: Internship Watcher
+          body: |
+            New rows on the MAIN board:
+            ${{ steps.diff_main.outputs.new }}
+
+            New rows on the OFF-SEASON board:
+            ${{ steps.diff_offseason.outputs.new }}
+
+      - name: Save new snapshots for next run
+        run: |
+          cp current-main.md snapshots/previous-main.md
+          cp current-offseason.md snapshots/previous-offseason.md
+
+      - name: Commit updated snapshots
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add snapshots/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update board snapshots"
+          git push
