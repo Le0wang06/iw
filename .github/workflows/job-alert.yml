@@ -21,47 +21,23 @@ jobs:
           curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/README.md -o current-main.md
           curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/README-Off-Season.md -o current-offseason.md
 
-      - name: Diff main board
-        id: diff_main
-        run: |
-          if [ -f snapshots/previous-main.md ]; then
-            NEW=$(diff snapshots/previous-main.md current-main.md | grep '^>' | grep 'simplify.jobs/c/' | sed 's/^> //' || true)
-          else
-            NEW=""
-          fi
-          echo "new<<EOF" >> $GITHUB_OUTPUT
-          echo "$NEW" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Diff off-season board
-        id: diff_offseason
-        run: |
-          if [ -f snapshots/previous-offseason.md ]; then
-            NEW=$(diff snapshots/previous-offseason.md current-offseason.md | grep '^>' | grep 'simplify.jobs/c/' | sed 's/^> //' || true)
-          else
-            NEW=""
-          fi
-          echo "new<<EOF" >> $GITHUB_OUTPUT
-          echo "$NEW" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Parse boards and build email
+        id: parse
+        run: python3 .github/workflow-scripts/parse_boards.py
 
       - name: Send email if new rows found
-        if: steps.diff_main.outputs.new != '' || steps.diff_offseason.outputs.new != ''
+        if: steps.parse.outputs.total != '0'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "New internship listing(s) posted"
+          subject: ${{ steps.parse.outputs.subject }}
           to: ${{ secrets.MAIL_TO }}
           from: Internship Watcher
-          body: |
-            New rows on the MAIN board:
-            ${{ steps.diff_main.outputs.new }}
-
-            New rows on the OFF-SEASON board:
-            ${{ steps.diff_offseason.outputs.new }}
+          html_body: ${{ steps.parse.outputs.html_body }}
+          body: ${{ steps.parse.outputs.plain_body }}
 
       - name: Save new snapshots for next run
         run: |
