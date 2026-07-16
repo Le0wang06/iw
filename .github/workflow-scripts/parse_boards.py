@@ -1,4 +1,5 @@
 import html
+import json
 import os
 import re
 import sys
@@ -13,8 +14,11 @@ APPLY_RE = re.compile(
     r'<a\s+href="([^"]+)"[^>]*>\s*<img[^>]*alt="Apply"',
     re.IGNORECASE,
 )
+POSTING_RE = re.compile(r"https://simplify\.jobs/p/([0-9a-fA-F-]{36})")
 TAG_RE = re.compile(r"<[^>]+>")
 WHITESPACE_RE = re.compile(r"\s+")
+
+SEEN_PATH = "snapshots/seen.json"
 
 
 def strip_html(fragment: str) -> str:
@@ -24,7 +28,26 @@ def strip_html(fragment: str) -> str:
     return WHITESPACE_RE.sub(" ", fragment).strip()
 
 
+def row_id(block: str, company: str, role: str, location: str, apply_url: str) -> str:
+    # The simplify.jobs/p/<uuid> link is the only identifier that survives
+    # edits to the row's text (role renamed, locations added, 🎓 tags, etc.).
+    m = POSTING_RE.search(block)
+    if m:
+        return "p:" + m.group(1).lower()
+    if apply_url:
+        return "a:" + apply_url.split("?")[0].rstrip("/")
+    slug = f"{company}|{role}|{location}".lower()
+    slug = slug.replace("🎓", "").replace("🛂", "").replace("🇺🇸", "")
+    return "t:" + WHITESPACE_RE.sub(" ", slug).strip()
+
+
 def parse_rows(path: str) -> dict:
+    """Return {stable_id: row} for every ACTIVE listing in the board file.
+
+    Rows without an Apply link are closed/archived listings (the boards embed
+    an "Inactive roles" archive with thousands of old rows) and are skipped —
+    they were the source of old internships being emailed as new.
+    """
     if not os.path.exists(path):
         return {}
     text = Path(path).read_text(encoding="utf-8", errors="replace")
@@ -45,10 +68,14 @@ def parse_rows(path: str) -> dict:
             continue
         role = strip_html(tds[1])
         location = strip_html(tds[2])
-        apply_match = APPLY_RE.search(tds[3])
-        apply_url = apply_match.group(1) if apply_match else ""
-        key = (company_name, role, location)
-        rows[key] = {
+        # The apply cell is tds[3] on the main board but tds[4] on the
+        # off-season board (extra "Terms" column), so search the whole row.
+        apply_match = APPLY_RE.search(block)
+        if not apply_match or "🔒" in block:
+            continue
+        apply_url = apply_match.group(1)
+        rid = row_id(block, company_name, role, location, apply_url)
+        rows[rid] = {
             "company": company_name,
             "role": role,
             "location": location,
@@ -57,10 +84,57 @@ def parse_rows(path: str) -> dict:
     return rows
 
 
-def diff(previous: dict, current: dict) -> list:
-    if not previous:
-        return []
-    return [current[k] for k in current if k not in previous]
+def load_seen() -> tuple:
+    """Return (seen_ids, exists). Falls back to seeding from the previous
+    snapshots the first time so the switch-over doesn't spam or miss rows."""
+    if os.path.exists(SEEN_PATH):
+        try:
+            return set(json.loads(Path(SEEN_PATH).read_text(encoding="utf-8"))), True
+        except (ValueError, OSError):
+            pass
+    seeded = set()
+    for path in ("snapshots/previous-main.md", "snapshots/previous-offseason.md"):
+        rows = parse_rows(path)
+        seeded |= set(rows)
+        seeded |= {display_id(row) for row in rows.values()}
+    return seeded, False
+
+
+def save_seen(seen: set) -> None:
+    Path(SEEN_PATH).parent.mkdir(exist_ok=True)
+    Path(SEEN_PATH).write_text(
+        json.dumps(sorted(seen), indent=0) + "\n", encoding="utf-8"
+    )
+
+
+def display_key(it: dict) -> tuple:
+    role = it["role"].replace("🎓", "").replace("🛂", "").replace("🇺🇸", "")
+    return (
+        it["company"].strip().lower(),
+        WHITESPACE_RE.sub(" ", role).strip().lower(),
+        it["location"].strip().lower(),
+    )
+
+
+def display_id(it: dict) -> str:
+    # Persisted alongside posting ids so a re-posted role with identical
+    # company/role/location (new req id) is never emailed a second time.
+    return "d:" + "|".join(display_key(it))
+
+
+def dedupe_for_display(new_main: list, new_off: list) -> tuple:
+    """Never show the same internship twice in one email, even when it
+    appears on both boards or under multiple posting ids."""
+    shown = set()
+    out_main, out_off = [], []
+    for items, out in ((new_main, out_main), (new_off, out_off)):
+        for it in items:
+            k = display_key(it)
+            if k in shown:
+                continue
+            shown.add(k)
+            out.append(it)
+    return out_main, out_off
 
 
 def render_html(new_main: list, new_off: list) -> str:
@@ -155,17 +229,34 @@ def build_subject(new_main: list, new_off: list) -> str:
 
 
 def main():
-    prev_main = parse_rows("snapshots/previous-main.md")
     curr_main = parse_rows("current-main.md")
-    prev_off = parse_rows("snapshots/previous-offseason.md")
     curr_off = parse_rows("current-offseason.md")
 
-    new_main = diff(prev_main, curr_main)
-    new_off = diff(prev_off, curr_off)
-    total = len(new_main) + len(new_off)
+    seen, had_seen_file = load_seen()
+    first_run = not had_seen_file and not seen
 
-    print(f"Parsed: prev_main={len(prev_main)} curr_main={len(curr_main)} "
-          f"prev_off={len(prev_off)} curr_off={len(curr_off)}")
+    def is_new(rid, row):
+        return rid not in seen and display_id(row) not in seen
+
+    new_main = [row for rid, row in curr_main.items() if is_new(rid, row)]
+    new_off = [
+        row for rid, row in curr_off.items()
+        if is_new(rid, row) and rid not in curr_main
+    ]
+    new_main, new_off = dedupe_for_display(new_main, new_off)
+
+    if first_run:
+        # No history at all: record the current boards without emailing.
+        new_main, new_off = [], []
+
+    for rows in (curr_main, curr_off):
+        seen |= set(rows)
+        seen |= {display_id(row) for row in rows.values()}
+    save_seen(seen)
+
+    total = len(new_main) + len(new_off)
+    print(f"Parsed: curr_main={len(curr_main)} curr_off={len(curr_off)} "
+          f"seen={len(seen)} seen_file={'yes' if had_seen_file else 'seeded'}")
     print(f"New: main={len(new_main)} off={len(new_off)} total={total}")
 
     html_body = render_html(new_main, new_off)
