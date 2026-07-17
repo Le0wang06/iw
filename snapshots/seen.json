@@ -302,6 +302,7 @@
 "d:mag aerospace|systems analyst apprentice|california",
 "d:magna|engineering adas perception features intern|auburn hills, mi",
 "d:magna|junior full stack developer co-op|oakville, on, canada",
+"d:magna|manufacturing execution systems co-op - manufacturing execution systems|oakville, on, canada",
 "d:magna|product engineering engineer intern|grand rapids, mi",
 "d:magna|software engineering co-op|newmarket, on, canada",
 "d:magna|systems engineer intern|southfield, mi",
@@ -812,6 +813,7 @@
 "p:58f15152-4d52-4c28-8a28-b8ec717ba3b0",
 "p:59023951-9789-4da2-b485-241751672517",
 "p:5971e10c-96c8-4605-9fe5-6b3de66eb784",
+"p:59c58f10-3239-45d4-9c44-cd1342e15ae8",
 "p:5b4bdca8-c130-4adb-ad23-910e23b9a733",
 "p:5b9e82eb-e170-450f-9dfe-62e7281dc8ae",
 "p:5c3d7673-1657-4d3b-9c24-be484e2d4cc0",
@@ -1213,5 +1215,6 @@
 "p:fe8fd0a0-0ded-47c1-8bba-8ac16fdd2926",
 "p:fe925a08-6009-425a-b112-6e80d0c715d0",
 "p:fec6fb73-1803-46db-9cba-34474df3c382",
-"p:ff964e2a-c499-417f-931c-e7ef2cdf871b"
+"p:ff964e2a-c499-417f-931c-e7ef2cdf871b",
+"p:ffbb5a63-45f4-4589-8f3e-814233effd30"
 ]
