@@ -1,0 +1,47 @@
+name: ATS Board Watcher
+
+on:
+  schedule:
+    - cron: '15,45 * * * *'   # every 30 min, offset from the Simplify watcher
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ats-watcher
+  cancel-in-progress: false
+
+jobs:
+  check-ats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+
+      - name: Poll ATS boards and build email
+        id: parse
+        run: python3 .github/workflow-scripts/ats_watcher.py
+
+      - name: Send email if new roles found
+        if: steps.parse.outputs.total != '0'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: ${{ steps.parse.outputs.subject }}
+          to: ${{ secrets.MAIL_TO }}
+          from: Internship Watcher (ATS)
+          html_body: ${{ steps.parse.outputs.html_body }}
+          body: ${{ steps.parse.outputs.plain_body }}
+
+      - name: Commit updated seen state
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add snapshots/ats-seen.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update ATS seen state"
+          git pull --rebase origin main
+          git push
