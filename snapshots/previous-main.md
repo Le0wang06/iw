@@ -7,9 +7,9 @@
 
 ---
 
-### Browse 248 Internship Roles by Category
+### Browse 250 Internship Roles by Category
 
-💻 **[Software Engineering](https://github.com/SimplifyJobs/Summer2026-Internships/blob/dev/README.md#-software-engineering-internship-roles)** (77)
+💻 **[Software Engineering](https://github.com/SimplifyJobs/Summer2026-Internships/blob/dev/README.md#-software-engineering-internship-roles)** (79)
 
 📱 **[Product Management](https://github.com/SimplifyJobs/Summer2026-Internships/blob/dev/README.md#-product-management-internship-roles)** (8)
 
@@ -302,6 +302,13 @@
 <td>28d</td>
 </tr>
 <tr>
+<td><strong><a href="https://simplify.jobs/c/Magna?utm_source=GHList&utm_medium=company">Magna</a></strong></td>
+<td>Software Engineering Co-op</td>
+<td>Newmarket, ON, Canada</td>
+<td><div align="center"><a href="https://wd3.myworkdaysite.com/recruiting/magna/Magna/job/Newmarket-Ontario-CA/Software-Engineering-Co-op_R00244013?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/47c8f8b7-82f7-465e-b6ca-9d1565be305c?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>29d</td>
+</tr>
+<tr>
 <td><strong><a href="https://simplify.jobs/c/IHerb?utm_source=GHList&utm_medium=company">iHerb</a></strong></td>
 <td>Software Development Intern</td>
 <td>Remote in USA</td>
@@ -540,6 +547,13 @@
 <td>1mo</td>
 </tr>
 <tr>
+<td><strong><a href="https://simplify.jobs/c/Magna?utm_source=GHList&utm_medium=company">Magna</a></strong></td>
+<td>Junior Full Stack Developer Co-op</td>
+<td>Oakville, ON, Canada</td>
+<td><div align="center"><a href="https://wd3.myworkdaysite.com/recruiting/magna/Magna/job/Milton-Ontario-CA/Junior-Full-Stack-Developer-Coop_R00244793?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/d700b10f-a687-49f6-bd90-94bd0783aeab?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>1mo</td>
+</tr>
+<tr>
 <td><strong><a href="https://simplify.jobs/c/Pony-AI?utm_source=GHList&utm_medium=company">pony.ai</a></strong></td>
 <td>Software Engineer Intern</td>
 <td>Fremont, CA</td>
@@ -648,7 +662,7 @@
 </table>
 
 
-🔒 **[See 3136 more closed roles →](https://github.com/SimplifyJobs/Summer2026-Internships/blob/dev/README-Inactive.md#-software-engineering-internship-roles-inactive)**
+🔒 **[See 3134 more closed roles →](https://github.com/SimplifyJobs/Summer2026-Internships/blob/dev/README-Inactive.md#-software-engineering-internship-roles-inactive)**
 
 
 
