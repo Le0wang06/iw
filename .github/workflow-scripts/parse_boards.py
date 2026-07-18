@@ -20,6 +20,25 @@ WHITESPACE_RE = re.compile(r"\s+")
 
 SEEN_PATH = "snapshots/seen.json"
 
+# Both boards group listings under "## <emoji> <Category> Internship Roles"
+# headers. Only the Software Engineering section should produce alerts —
+# Product, Data Science/AI/ML, Quant, and Hardware rows are skipped.
+SWE_SECTION_RE = re.compile(
+    r"^##[^\n]*Software Engineering Internship Roles(.*?)(?=^## |\Z)",
+    re.DOTALL | re.MULTILINE,
+)
+
+
+def swe_section(text: str) -> str:
+    m = SWE_SECTION_RE.search(text)
+    if m:
+        return m.group(1)
+    # Header not found (board format changed): fall back to the whole file
+    # so new roles are never silently dropped.
+    print("WARNING: Software Engineering section header not found; "
+          "parsing entire board", file=sys.stderr)
+    return text
+
 
 def strip_html(fragment: str) -> str:
     fragment = fragment.replace("<br>", " · ").replace("<br/>", " · ").replace("<br />", " · ")
@@ -50,7 +69,7 @@ def parse_rows(path: str) -> dict:
     """
     if not os.path.exists(path):
         return {}
-    text = Path(path).read_text(encoding="utf-8", errors="replace")
+    text = swe_section(Path(path).read_text(encoding="utf-8", errors="replace"))
     rows = {}
     last_company = None
     for block in TR_RE.findall(text):
@@ -189,7 +208,7 @@ def render_html(new_main: list, new_off: list) -> str:
         f'<h1 style="font-size:18px;margin:0 0 4px;color:#111;">'
         f'{total} new internship listing{"s" if total != 1 else ""}</h1>'
         '<p style="font-size:12px;color:#888;margin:0 0 8px;">'
-        'Detected on the SimplifyJobs Summer 2026 boards.</p>'
+        'Software engineering roles on the SimplifyJobs Summer 2026 boards.</p>'
         f'{section("Main Board (Summer 2026)", new_main)}'
         f'{section("Off-Season Board", new_off)}'
         '<hr style="border:0;border-top:1px solid #eee;margin:20px 0 8px;">'
