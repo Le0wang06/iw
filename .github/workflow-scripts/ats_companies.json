@@ -26,11 +26,6 @@
  },
  {
   "ats": "greenhouse",
-  "slug": "akunacapital",
-  "name": "Akuna Capital"
- },
- {
-  "ats": "greenhouse",
   "slug": "andurilindustries",
   "name": "Anduril"
  },
@@ -43,6 +38,11 @@
   "ats": "greenhouse",
   "slug": "aperaaiinc",
   "name": "Apera AI"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "applovin",
+  "name": "AppLovin"
  },
  {
   "ats": "greenhouse",
@@ -161,13 +161,13 @@
  },
  {
   "ats": "greenhouse",
-  "slug": "dropbox",
-  "name": "Dropbox"
+  "slug": "doubleverify",
+  "name": "DoubleVerify"
  },
  {
   "ats": "greenhouse",
-  "slug": "drweng",
-  "name": "DRW"
+  "slug": "dropbox",
+  "name": "Dropbox"
  },
  {
   "ats": "greenhouse",
@@ -221,18 +221,8 @@
  },
  {
   "ats": "greenhouse",
-  "slug": "wehrtyou",
-  "name": "Hudson River Trading"
- },
- {
-  "ats": "greenhouse",
   "slug": "iherb",
   "name": "iHerb"
- },
- {
-  "ats": "greenhouse",
-  "slug": "imc",
-  "name": "IMC Trading"
  },
  {
   "ats": "greenhouse",
@@ -243,11 +233,6 @@
   "ats": "greenhouse",
   "slug": "instead",
   "name": "Instead"
- },
- {
-  "ats": "greenhouse",
-  "slug": "jumptrading",
-  "name": "Jump Trading"
  },
  {
   "ats": "lever",
@@ -268,6 +253,11 @@
   "ats": "greenhouse",
   "slug": "later",
   "name": "Later"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "liftoff",
+  "name": "Liftoff"
  },
  {
   "ats": "ashby",
@@ -298,6 +288,11 @@
   "ats": "ashby",
   "slug": "meshy",
   "name": "Meshy"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "moloco",
+  "name": "Moloco"
  },
  {
   "ats": "greenhouse",
@@ -340,11 +335,6 @@
   "name": "OpenAI"
  },
  {
-  "ats": "greenhouse",
-  "slug": "optiverus",
-  "name": "Optiver"
- },
- {
   "ats": "lever",
   "slug": "palantir",
   "name": "Palantir"
@@ -373,11 +363,6 @@
   "ats": "lever",
   "slug": "plus-2",
   "name": "PlusAI"
- },
- {
-  "ats": "greenhouse",
-  "slug": "point72",
-  "name": "Point72"
  },
  {
   "ats": "greenhouse",
@@ -471,6 +456,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "stackadapt",
+  "name": "StackAdapt"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "stripe",
   "name": "Stripe"
  },
@@ -478,6 +468,11 @@
   "ats": "ashby",
   "slug": "supabase",
   "name": "Supabase"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "thetradedesk",
+  "name": "The Trade Desk"
  },
  {
   "ats": "greenhouse",
@@ -513,6 +508,11 @@
   "ats": "lever",
   "slug": "xsolla",
   "name": "Xsolla"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "zetaglobal",
+  "name": "Zeta Global"
  },
  {
   "ats": "lever",
