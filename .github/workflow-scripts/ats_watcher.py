@@ -33,14 +33,28 @@ ROLE_RE = re.compile(
 )
 
 EXCLUDE_RE = re.compile(
-    r"front[- ]?end|mobile|\bios\b|android|machine learning|\bml\b|\bai\b|"
-    r"artificial intelligence|data scien|data analy|analytics|business|"
+    r"front[- ]?end|mobile|\bios\b|android|data scien|data analy|"
+    r"analytics|business|"
     r"hardware|electrical|mechanical|manufactur|embedded|firmware|silicon|"
     r"\basic\b|fpga|\brf\b|optic|quality|\bqa\b|\btest\b|security|"
     r"research (scientist|engineer)|design(er)?\b|\bui\b|\bux\b|graphics|"
     r"product manag|marketing|"
     r"sales|solutions|support|success|recruit|people|legal|finance|"
     r"accounting|supply chain",
+    re.I,
+)
+
+# AI/ML terms only disqualify when the title isn't clearly a software
+# engineering role — "Software Engineer Intern, AI Platform" is a backend
+# role, "Machine Learning Intern" is not.
+AI_EXCLUDE_RE = re.compile(
+    r"machine learning|\bml\b|\bai\b|artificial intelligence|deep learning",
+    re.I,
+)
+
+SWE_RE = re.compile(
+    r"software (engineer|engineering|developer|development)|back[- ]?end|"
+    r"infrastructure|\binfra\b|dev[- ]?ops|site reliability|\bsre\b",
     re.I,
 )
 
@@ -92,11 +106,13 @@ WHITESPACE_RE = re.compile(r"\s+")
 
 
 def wanted_title(title: str) -> bool:
-    return bool(
-        INTERN_RE.search(title)
-        and ROLE_RE.search(title)
-        and not EXCLUDE_RE.search(title)
-    )
+    if not (INTERN_RE.search(title) and ROLE_RE.search(title)):
+        return False
+    if EXCLUDE_RE.search(title):
+        return False
+    if AI_EXCLUDE_RE.search(title) and not SWE_RE.search(title):
+        return False
+    return True
 
 
 def is_us(location: str) -> bool:

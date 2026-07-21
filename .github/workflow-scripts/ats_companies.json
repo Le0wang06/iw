@@ -5,9 +5,34 @@
   "name": "1Password"
  },
  {
+  "ats": "ashby",
+  "slug": "1x",
+  "name": "1X"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "abnormalsecurity",
+  "name": "Abnormal Security"
+ },
+ {
+  "ats": "ashby",
+  "slug": "abridge",
+  "name": "Abridge"
+ },
+ {
   "ats": "greenhouse",
   "slug": "ada18",
   "name": "Ada"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "addepar1",
+  "name": "Addepar"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "adyen",
+  "name": "Adyen"
  },
  {
   "ats": "greenhouse",
@@ -28,6 +53,11 @@
   "ats": "greenhouse",
   "slug": "airtable",
   "name": "Airtable"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "alloy",
+  "name": "Alloy"
  },
  {
   "ats": "greenhouse",
@@ -56,6 +86,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "apptronik",
+  "name": "Apptronik"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "argmax",
   "name": "Argmax"
  },
@@ -68,6 +103,11 @@
   "ats": "greenhouse",
   "slug": "asteraearlycareer2026",
   "name": "Astera Labs"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "attentive",
+  "name": "Attentive"
  },
  {
   "ats": "greenhouse",
@@ -106,6 +146,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "bitwarden",
+  "name": "Bitwarden"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "boxinc",
   "name": "Box"
  },
@@ -118,6 +163,16 @@
   "ats": "greenhouse",
   "slug": "brex",
   "name": "Brex"
+ },
+ {
+  "ats": "ashby",
+  "slug": "browserbase",
+  "name": "Browserbase"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "calendly",
+  "name": "Calendly"
  },
  {
   "ats": "greenhouse",
@@ -136,8 +191,28 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "chainguard",
+  "name": "Chainguard"
+ },
+ {
+  "ats": "ashby",
+  "slug": "character",
+  "name": "Character.AI"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "chime",
   "name": "Chime"
+ },
+ {
+  "ats": "ashby",
+  "slug": "trychroma",
+  "name": "Chroma"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "circleci",
+  "name": "CircleCI"
  },
  {
   "ats": "greenhouse",
@@ -165,6 +240,11 @@
   "name": "Cockroach Labs"
  },
  {
+  "ats": "ashby",
+  "slug": "cognition",
+  "name": "Cognition"
+ },
+ {
   "ats": "greenhouse",
   "slug": "coinbase",
   "name": "Coinbase"
@@ -173,6 +253,26 @@
   "ats": "ashby",
   "slug": "composio",
   "name": "Composio"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "consensys",
+  "name": "Consensys"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "coreweave",
+  "name": "CoreWeave"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "cribl",
+  "name": "Cribl"
+ },
+ {
+  "ats": "ashby",
+  "slug": "Crusoe",
+  "name": "Crusoe"
  },
  {
   "ats": "ashby",
@@ -201,8 +301,18 @@
  },
  {
   "ats": "ashby",
+  "slug": "decagon",
+  "name": "Decagon"
+ },
+ {
+  "ats": "ashby",
   "slug": "deepgram",
   "name": "Deepgram"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "digitalocean98",
+  "name": "DigitalOcean"
  },
  {
   "ats": "greenhouse",
@@ -226,6 +336,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "dremio",
+  "name": "Dremio"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "dropbox",
   "name": "Dropbox"
  },
@@ -238,6 +353,16 @@
   "ats": "greenhouse",
   "slug": "elastic",
   "name": "Elastic"
+ },
+ {
+  "ats": "ashby",
+  "slug": "elevenlabs",
+  "name": "ElevenLabs"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "epicgames",
+  "name": "Epic Games"
  },
  {
   "ats": "ashby",
@@ -261,6 +386,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "faire",
+  "name": "Faire"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "fastly",
   "name": "Fastly"
  },
@@ -275,6 +405,16 @@
   "name": "Fivetran"
  },
  {
+  "ats": "greenhouse",
+  "slug": "flexport",
+  "name": "Flexport"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "gemini",
+  "name": "Gemini"
+ },
+ {
   "ats": "lever",
   "slug": "genbio",
   "name": "GenBio AI"
@@ -283,6 +423,21 @@
   "ats": "greenhouse",
   "slug": "gitlab",
   "name": "GitLab"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "gleanwork",
+  "name": "Glean"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "goatgroup",
+  "name": "GOAT Group"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "deepmind",
+  "name": "Google DeepMind"
  },
  {
   "ats": "greenhouse",
@@ -295,9 +450,39 @@
   "name": "Gusto"
  },
  {
+  "ats": "ashby",
+  "slug": "harvey",
+  "name": "Harvey"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "hightouch",
+  "name": "Hightouch"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "honeycomb",
+  "name": "Honeycomb"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "huntress",
+  "name": "Huntress"
+ },
+ {
   "ats": "greenhouse",
   "slug": "iherb",
   "name": "iHerb"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "imbue",
+  "name": "Imbue"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "imply",
+  "name": "Imply"
  },
  {
   "ats": "greenhouse",
@@ -308,6 +493,11 @@
   "ats": "greenhouse",
   "slug": "instead",
   "name": "Instead"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "intercom",
+  "name": "Intercom"
  },
  {
   "ats": "lever",
@@ -328,6 +518,16 @@
   "ats": "greenhouse",
   "slug": "studiokraftonboard",
   "name": "KRAFTON"
+ },
+ {
+  "ats": "lever",
+  "slug": "kraken123",
+  "name": "Kraken"
+ },
+ {
+  "ats": "ashby",
+  "slug": "langchain",
+  "name": "LangChain"
  },
  {
   "ats": "greenhouse",
@@ -351,8 +551,23 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "lithic",
+  "name": "Lithic"
+ },
+ {
+  "ats": "ashby",
+  "slug": "llamaindex",
+  "name": "LlamaIndex"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "lyft",
   "name": "Lyft"
+ },
+ {
+  "ats": "ashby",
+  "slug": "magic.dev",
+  "name": "Magic"
  },
  {
   "ats": "greenhouse",
@@ -371,6 +586,16 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "mercari",
+  "name": "Mercari"
+ },
+ {
+  "ats": "ashby",
+  "slug": "mercor",
+  "name": "Mercor"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "mercury",
   "name": "Mercury"
  },
@@ -381,8 +606,23 @@
  },
  {
   "ats": "ashby",
+  "slug": "mintlify",
+  "name": "Mintlify"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "mixpanel",
+  "name": "Mixpanel"
+ },
+ {
+  "ats": "ashby",
   "slug": "modal",
   "name": "Modal"
+ },
+ {
+  "ats": "ashby",
+  "slug": "moderntreasury",
+  "name": "Modern Treasury"
  },
  {
   "ats": "greenhouse",
@@ -400,9 +640,24 @@
   "name": "MongoDB"
  },
  {
+  "ats": "ashby",
+  "slug": "montecarlodata",
+  "name": "Monte Carlo"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "gomotive",
+  "name": "Motive"
+ },
+ {
   "ats": "greenhouse",
   "slug": "neo4j",
   "name": "Neo4j"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "netlify",
+  "name": "Netlify"
  },
  {
   "ats": "greenhouse",
@@ -451,6 +706,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "oscar",
+  "name": "Oscar Health"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "pagerduty",
   "name": "PagerDuty"
  },
@@ -470,6 +730,11 @@
   "name": "Persona AI"
  },
  {
+  "ats": "ashby",
+  "slug": "physicalintelligence",
+  "name": "Physical Intelligence"
+ },
+ {
   "ats": "greenhouse",
   "slug": "pinterest",
   "name": "Pinterest"
@@ -480,9 +745,19 @@
   "name": "Plaid"
  },
  {
+  "ats": "greenhouse",
+  "slug": "planetscale",
+  "name": "PlanetScale"
+ },
+ {
   "ats": "lever",
   "slug": "plus-2",
   "name": "PlusAI"
+ },
+ {
+  "ats": "ashby",
+  "slug": "poolside",
+  "name": "Poolside"
  },
  {
   "ats": "greenhouse",
@@ -490,9 +765,29 @@
   "name": "Postman"
  },
  {
+  "ats": "ashby",
+  "slug": "prefect",
+  "name": "Prefect"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "prisma",
+  "name": "Prisma"
+ },
+ {
   "ats": "greenhouse",
   "slug": "purestorage",
   "name": "Pure Storage"
+ },
+ {
+  "ats": "ashby",
+  "slug": "quora",
+  "name": "Quora"
+ },
+ {
+  "ats": "ashby",
+  "slug": "railway",
+  "name": "Railway"
  },
  {
   "ats": "lever",
@@ -511,8 +806,18 @@
  },
  {
   "ats": "ashby",
+  "slug": "reflectionai",
+  "name": "Reflection AI"
+ },
+ {
+  "ats": "ashby",
   "slug": "remarcable-inc",
   "name": "Remarcable"
+ },
+ {
+  "ats": "ashby",
+  "slug": "render",
+  "name": "Render"
  },
  {
   "ats": "ashby",
@@ -528,6 +833,11 @@
   "ats": "greenhouse",
   "slug": "riotgames",
   "name": "Riot Games"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "ripple",
+  "name": "Ripple"
  },
  {
   "ats": "ashby",
@@ -546,6 +856,16 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "roku",
+  "name": "Roku"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "sambanovasystems",
+  "name": "SambaNova"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "samsara",
   "name": "Samsara"
  },
@@ -558,6 +878,11 @@
   "ats": "greenhouse",
   "slug": "scaleai",
   "name": "Scale AI"
+ },
+ {
+  "ats": "ashby",
+  "slug": "semgrep",
+  "name": "Semgrep"
  },
  {
   "ats": "ashby",
@@ -578,6 +903,11 @@
   "ats": "ashby",
   "slug": "sierra",
   "name": "Sierra"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "sigmacomputing",
+  "name": "Sigma Computing"
  },
  {
   "ats": "greenhouse",
@@ -606,8 +936,18 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "sourcegraph91",
+  "name": "Sourcegraph"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "spacex",
   "name": "SpaceX"
+ },
+ {
+  "ats": "lever",
+  "slug": "spotify",
+  "name": "Spotify"
  },
  {
   "ats": "greenhouse",
@@ -621,13 +961,28 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "stockx",
+  "name": "StockX"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "stripe",
   "name": "Stripe"
  },
  {
   "ats": "ashby",
+  "slug": "suno",
+  "name": "Suno"
+ },
+ {
+  "ats": "ashby",
   "slug": "supabase",
   "name": "Supabase"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "tailscale",
+  "name": "Tailscale"
  },
  {
   "ats": "greenhouse",
@@ -656,6 +1011,16 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "tripadvisor",
+  "name": "Tripadvisor"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "tubitv",
+  "name": "Tubi"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "twilio",
   "name": "Twilio"
  },
@@ -665,9 +1030,19 @@
   "name": "Twitch"
  },
  {
+  "ats": "greenhouse",
+  "slug": "vannevarlabs",
+  "name": "Vannevar Labs"
+ },
+ {
   "ats": "ashby",
   "slug": "vanta",
   "name": "Vanta"
+ },
+ {
+  "ats": "ashby",
+  "slug": "vapi",
+  "name": "Vapi"
  },
  {
   "ats": "greenhouse",
@@ -685,14 +1060,39 @@
   "name": "Vital Lyfe"
  },
  {
+  "ats": "lever",
+  "slug": "waabi",
+  "name": "Waabi"
+ },
+ {
+  "ats": "ashby",
+  "slug": "warp",
+  "name": "Warp"
+ },
+ {
   "ats": "greenhouse",
   "slug": "waymo",
   "name": "Waymo"
  },
  {
+  "ats": "lever",
+  "slug": "wealthfront",
+  "name": "Wealthfront"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "webflow",
+  "name": "Webflow"
+ },
+ {
   "ats": "greenhouse",
   "slug": "wizinc",
   "name": "Wiz"
+ },
+ {
+  "ats": "ashby",
+  "slug": "workos",
+  "name": "WorkOS"
  },
  {
   "ats": "greenhouse",
@@ -705,9 +1105,29 @@
   "name": "Xsolla"
  },
  {
+  "ats": "ashby",
+  "slug": "zapier",
+  "name": "Zapier"
+ },
+ {
+  "ats": "ashby",
+  "slug": "zed",
+  "name": "Zed Industries"
+ },
+ {
   "ats": "greenhouse",
   "slug": "zetaglobal",
   "name": "Zeta Global"
+ },
+ {
+  "ats": "ashby",
+  "slug": "zip",
+  "name": "Zip"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "zocdoc",
+  "name": "Zocdoc"
  },
  {
   "ats": "lever",
