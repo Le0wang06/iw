@@ -1422,7 +1422,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 
 <details>
-<summary>🗃️ Inactive roles (987)</summary>
+<summary>🗃️ Inactive roles (986)</summary>
 
 <table>
 <thead>
@@ -9324,14 +9324,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>🔒</td>
 <td>7mo</td>
 </tr>
-<tr>
-<td><strong><a href="https://simplify.jobs/c/Copart?utm_source=GHList&utm_medium=company">Copart</a></strong></td>
-<td>Software Engineering Intern</td>
-<td>Texas</td>
-<td>Spring 2026</td>
-<td>🔒</td>
-<td>8mo</td>
-</tr>
 </tbody>
 </table>
 
@@ -12501,6 +12493,14 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td><div align="center"><a href="https://pg.wd5.myworkdayjobs.com/1000/job/BOSTON-GO--TECH-CENTER/Purdue-University-R-D-Engineer-Co-op--Purdue-Students-Graduating-in-2028-2029-ONLY_R000155305?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/70567d14-93a2-4b6f-b4bd-a9e981c14af4?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
 <td>25d</td>
 </tr>
+<tr>
+<td><strong><a href="https://simplify.jobs/c/Pika?utm_source=GHList&utm_medium=company">Pika</a></strong></td>
+<td>Research Intern - BS/MS/PhD 🎓</td>
+<td>Palo Alto, CA</td>
+<td>Fall 2026</td>
+<td><div align="center"><a href="https://jobs.ashbyhq.com/pika/e135acb1-2a0b-47b4-81b2-3cb0f787657a/application?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/99cfa529-cdea-4b33-896c-40df0577187c?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>27d</td>
+</tr>
 
 </tbody>
 </table>
@@ -12527,14 +12527,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><strong><a href="https://simplify.jobs/c/Pika?utm_source=GHList&utm_medium=company">Pika</a></strong></td>
-<td>Research Intern - BS/MS/PhD 🎓</td>
-<td>Palo Alto, CA</td>
-<td>Fall 2026</td>
-<td><div align="center"><a href="https://jobs.ashbyhq.com/pika/e135acb1-2a0b-47b4-81b2-3cb0f787657a/application?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/99cfa529-cdea-4b33-896c-40df0577187c?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
-<td>27d</td>
-</tr>
 <tr>
 <td>🔥 <strong><a href="https://simplify.jobs/c/Meta?utm_source=GHList&utm_medium=company">Meta</a></strong></td>
 <td>Research Scientist Intern - Monetization Computer Vision 🎓</td>
@@ -13020,7 +13012,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 
 <details>
-<summary>🗃️ Inactive roles (1292)</summary>
+<summary>🗃️ Inactive roles (1291)</summary>
 
 <table>
 <thead>
@@ -23369,14 +23361,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Spring 2026</td>
 <td>🔒</td>
 <td>7mo</td>
-</tr>
-<tr>
-<td><strong><a href="https://simplify.jobs/c/Capital-Power?utm_source=GHList&utm_medium=company">Capital Power</a></strong></td>
-<td>ICS Engineering Intern/Co-op</td>
-<td>Edmonton, AB, Canada</td>
-<td>Winter 2026, Spring 2026, Summer 2026</td>
-<td>🔒</td>
-<td>8mo</td>
 </tr>
 </tbody>
 </table>
