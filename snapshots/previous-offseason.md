@@ -10,17 +10,17 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 ---
 
-### Browse 540 Internship Roles by Category
+### Browse 542 Internship Roles by Category
 
 💻 **[Software Engineering](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-software-engineering-internship-roles)** (179)
 
-📱 **[Product Management](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-product-management-internship-roles)** (25)
+📱 **[Product Management](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-product-management-internship-roles)** (26)
 
 🤖 **[Data Science, AI & Machine Learning](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-data-science-ai--machine-learning-internship-roles)** (222)
 
 📈 **[Quantitative Finance](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-quantitative-finance-internship-roles)** (24)
 
-🔧 **[Hardware Engineering](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-hardware-engineering-internship-roles)** (90)
+🔧 **[Hardware Engineering](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-hardware-engineering-internship-roles)** (91)
 
 ---
 
@@ -9375,6 +9375,14 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>1d</td>
 </tr>
 <tr>
+<td><strong><a href="https://simplify.jobs/c/Eko-Health?utm_source=GHList&utm_medium=company">Eko Health</a></strong></td>
+<td>Clinical Product Strategy Intern - Clinical Technology</td>
+<td>Remote in USA</td>
+<td>Fall 2026</td>
+<td><div align="center"><a href="https://jobs.lever.co/ekohealth/ff0ee63d-4733-4c97-b3c5-0a6f1e303f1d/apply?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/ccc26e13-7964-413d-8db2-404361781e7a?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>3d</td>
+</tr>
+<tr>
 <td><strong><a href="https://simplify.jobs/c/StudyFetch?utm_source=GHList&utm_medium=company">StudyFetch</a></strong></td>
 <td>Product Intern</td>
 <td>Beverly Hills, CA</td>
@@ -12413,14 +12421,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td><div align="center"><a href="https://semtech.wd1.myworkdayjobs.com/SemtechJobs/job/CAN---Burlington-ON/Salesforce-QA---Data-Analyst-Intern_REQ3488-2?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/165173b5-9af2-4e5c-929e-0274613ad6b0?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
 <td>23d</td>
 </tr>
-<tr>
-<td><strong><a href="https://simplify.jobs/c/Magna?utm_source=GHList&utm_medium=company">Magna</a></strong></td>
-<td>Manufacturing Execution Systems Co-op - Manufacturing Execution Systems</td>
-<td>Oakville, ON, Canada</td>
-<td>Fall 2026</td>
-<td><div align="center"><a href="https://wd3.myworkdaysite.com/recruiting/magna/Magna/job/Milton-Ontario-CA/Manufacturing-Execution-Systems--MES--Co-Op---Starting-in-September_R00252658?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/59c58f10-3239-45d4-9c44-cd1342e15ae8?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
-<td>23d</td>
-</tr>
 
 </tbody>
 </table>
@@ -12447,6 +12447,14 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><strong><a href="https://simplify.jobs/c/Magna?utm_source=GHList&utm_medium=company">Magna</a></strong></td>
+<td>Manufacturing Execution Systems Co-op - Manufacturing Execution Systems</td>
+<td>Oakville, ON, Canada</td>
+<td>Fall 2026</td>
+<td><div align="center"><a href="https://wd3.myworkdaysite.com/recruiting/magna/Magna/job/Milton-Ontario-CA/Manufacturing-Execution-Systems--MES--Co-Op---Starting-in-September_R00252658?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/59c58f10-3239-45d4-9c44-cd1342e15ae8?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>23d</td>
+</tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/Onsemi?utm_source=GHList&utm_medium=company">onsemi</a></strong></td>
 <td>AI & Data Analytics Intern</td>
@@ -19307,7 +19315,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>6mo</td>
 </tr>
 <tr>
-<td><strong><a href="https://simplify.jobs/c/Disney?utm_source=GHList&utm_medium=company">The Walt Disney Company</a></strong></td>
+<td>↳</td>
 <td>ABC Research Insights & Analytics Intern</td>
 <td>Burbank, CA</td>
 <td>Summer 2026, Fall 2026</td>
@@ -21483,7 +21491,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>6mo</td>
 </tr>
 <tr>
-<td>↳</td>
+<td><strong><a href="https://simplify.jobs/c/Woven-Planet?utm_source=GHList&utm_medium=company">Woven</a></strong></td>
 <td>Machine Learning Intern - Vehicle Perception 🎓</td>
 <td>Palo Alto, CA</td>
 <td>Spring 2026</td>
@@ -24126,6 +24134,14 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>8d</td>
 </tr>
 <tr>
+<td><strong><a href="https://simplify.jobs/c/e4ceb7ca-b9b5-4eda-b494-85c226f01789?utm_source=GHList&utm_medium=company">LightGuide, Inc.</a></strong></td>
+<td>Application Engineering Co-op</td>
+<td>Wixom, MI</td>
+<td>Fall 2026</td>
+<td><div align="center"><a href="https://ats.rippling.com/lightguide/jobs/37069bc9-a6ba-4841-97fb-b7d743826af0?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/cdaa541b-91c1-4d8e-9532-02dc579cfa22?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>8d</td>
+</tr>
+<tr>
 <td><strong><a href="https://simplify.jobs/c/Avery-Dennison?utm_source=GHList&utm_medium=company">Avery Dennison</a></strong></td>
 <td>RFID Applications Engineering Co-op</td>
 <td>Miamisburg, OH</td>
@@ -24674,7 +24690,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 
 <details>
-<summary>🗃️ Inactive roles (564)</summary>
+<summary>🗃️ Inactive roles (563)</summary>
 
 <table>
 <thead>
@@ -24703,14 +24719,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Fall 2026</td>
 <td>🔒</td>
 <td>3d</td>
-</tr>
-<tr>
-<td><strong><a href="https://simplify.jobs/c/e4ceb7ca-b9b5-4eda-b494-85c226f01789?utm_source=GHList&utm_medium=company">LightGuide, Inc.</a></strong></td>
-<td>Application Engineering Co-op</td>
-<td>Wixom, MI</td>
-<td>Fall 2026</td>
-<td>🔒</td>
-<td>8d</td>
 </tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/Avery-Dennison?utm_source=GHList&utm_medium=company">Avery Dennison</a></strong></td>
