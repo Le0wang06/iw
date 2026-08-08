@@ -13020,7 +13020,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 
 <details>
-<summary>🗃️ Inactive roles (1289)</summary>
+<summary>🗃️ Inactive roles (1288)</summary>
 
 <table>
 <thead>
@@ -23343,14 +23343,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Computer Vision/Machine Learning Intern</td>
 <td>Milpitas, CA</td>
 <td>Spring 2026</td>
-<td>🔒</td>
-<td>7mo</td>
-</tr>
-<tr>
-<td>🔥 <strong><a href="https://simplify.jobs/c/Meta?utm_source=GHList&utm_medium=company">Meta</a></strong></td>
-<td>Research Scientist Intern, LLM Evaluation 🎓 🛂</td>
-<td>New York, NY</td>
-<td>Summer 2026, Winter 2026, Spring 2026, Fall 2026</td>
 <td>🔒</td>
 <td>7mo</td>
 </tr>
