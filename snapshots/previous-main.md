@@ -7,13 +7,13 @@
 
 ---
 
-### Browse 283 Internship Roles by Category
+### Browse 284 Internship Roles by Category
 
 💻 **[Software Engineering](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-software-engineering-internship-roles)** (105)
 
 📱 **[Product Management](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-product-management-internship-roles)** (21)
 
-🤖 **[Data Science, AI & Machine Learning](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-data-science-ai--machine-learning-internship-roles)** (83)
+🤖 **[Data Science, AI & Machine Learning](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-data-science-ai--machine-learning-internship-roles)** (84)
 
 📈 **[Quantitative Finance](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-quantitative-finance-internship-roles)** (64)
 
@@ -1530,6 +1530,13 @@
 <td>12d</td>
 </tr>
 <tr>
+<td>↳</td>
+<td>Technology Intern</td>
+<td><details><summary><strong>7 locations</strong></summary>Houston, TX<br>Washington, DC<br>SF<br>LA<br>Chicago, IL<br>NYC<br>Atlanta, GA</details></td>
+<td><div align="center"><a href="https://fticonsulting.wd108.myworkdayjobs.com/FTIConsultingCareers/job/United-States/XMLNAME-2027-Intern---Technology_JR260339-1?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/5efbd1de-4e9a-48b1-82f2-9d2d0c6f3914?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>12d</td>
+</tr>
+<tr>
 <td><strong><a href="https://simplify.jobs/c/G-Research?utm_source=GHList&utm_medium=company">G-Research</a></strong></td>
 <td>Data Science Intern</td>
 <td>London, UK</td>
@@ -1624,7 +1631,7 @@
 </table>
 
 
-🔒 **[See 29 more closed roles →](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Inactive.md#-data-science-ai--machine-learning-internship-roles-inactive)**
+🔒 **[See 28 more closed roles →](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Inactive.md#-data-science-ai--machine-learning-internship-roles-inactive)**
 
 
 
