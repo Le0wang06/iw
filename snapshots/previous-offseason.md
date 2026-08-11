@@ -10,9 +10,9 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 ---
 
-### Browse 534 Internship Roles by Category
+### Browse 533 Internship Roles by Category
 
-💻 **[Software Engineering](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-software-engineering-internship-roles)** (180)
+💻 **[Software Engineering](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-software-engineering-internship-roles)** (179)
 
 📱 **[Product Management](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Off-Season.md#-product-management-internship-roles)** (26)
 
@@ -368,14 +368,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Fall 2026</td>
 <td><div align="center"><a href="https://jobs.ashbyhq.com/valstad/7ff6d452-969f-43a6-9127-d153025e6aea/application?embed=true&utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/daba25e4-9e11-4769-bf2a-22371dbb26a5?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
 <td>6d</td>
-</tr>
-<tr>
-<td>🔥 <strong><a href="https://simplify.jobs/c/Microsoft?utm_source=GHList&utm_medium=company">Microsoft</a></strong></td>
-<td>Software Engineer Security & Identity Intern</td>
-<td>Redmond, WA</td>
-<td>Fall 2026</td>
-<td><div align="center"><a href="https://apply.careers.microsoft.com/careers/job/1970393556922930?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/b412b084-36e9-45e2-b3a0-561c4336e62e?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
-<td>7d</td>
 </tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/Incident-IQ?utm_source=GHList&utm_medium=company">Incident IQ</a></strong></td>
@@ -1518,7 +1510,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 
 <details>
-<summary>🗃️ Inactive roles (964)</summary>
+<summary>🗃️ Inactive roles (965)</summary>
 
 <table>
 <thead>
@@ -1534,6 +1526,14 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <tbody>
 <tr>
 <td>🔥 <strong><a href="https://simplify.jobs/c/Microsoft?utm_source=GHList&utm_medium=company">Microsoft</a></strong></td>
+<td>Software Engineer Security & Identity Intern</td>
+<td>Redmond, WA</td>
+<td>Fall 2026</td>
+<td>🔒</td>
+<td>7d</td>
+</tr>
+<tr>
+<td>↳</td>
 <td>Full-Stack Product Engineer Intern - Web + Services</td>
 <td>Redmond, WA</td>
 <td>Fall 2026</td>
@@ -9455,7 +9455,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>1mo</td>
 </tr>
 <tr>
-<td><strong><a href="https://simplify.jobs/c/Tencent?utm_source=GHList&utm_medium=company">Tencent</a></strong></td>
+<td>↳</td>
 <td>AI Product Manager Intern 🎓</td>
 <td>London, UK</td>
 <td>Fall 2026</td>
@@ -17688,7 +17688,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Needham, MA</td>
 <td>Fall 2026</td>
 <td>🔒</td>
-<td>4mo</td>
+<td>5mo</td>
 </tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/BorgWarner?utm_source=GHList&utm_medium=company">BorgWarner</a></strong></td>
@@ -19315,7 +19315,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>6mo</td>
 </tr>
 <tr>
-<td>↳</td>
+<td><strong><a href="https://simplify.jobs/c/Disney?utm_source=GHList&utm_medium=company">The Walt Disney Company</a></strong></td>
 <td>ABC Research Insights & Analytics Intern</td>
 <td>Burbank, CA</td>
 <td>Summer 2026, Fall 2026</td>
@@ -26878,7 +26878,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Celebration, FL</td>
 <td>Summer 2026, Fall 2026</td>
 <td>🔒</td>
-<td>4mo</td>
+<td>5mo</td>
 </tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/Pennsylvania-State-University?utm_source=GHList&utm_medium=company">Pennsylvania State University</a></strong></td>
@@ -26886,7 +26886,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>State College, PA</td>
 <td>Spring 2026, Fall 2026</td>
 <td>🔒</td>
-<td>4mo</td>
+<td>5mo</td>
 </tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/Johnson-Johnson?utm_source=GHList&utm_medium=company">Johnson & Johnson</a></strong></td>
@@ -26894,7 +26894,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Cincinnati, OH</td>
 <td>Fall 2026</td>
 <td>🔒</td>
-<td>4mo</td>
+<td>5mo</td>
 </tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/bfdacd80-1593-4655-8b3a-da62394b5fff?utm_source=GHList&utm_medium=company">nVent</a></strong></td>
@@ -27809,7 +27809,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>6mo</td>
 </tr>
 <tr>
-<td><strong><a href="https://simplify.jobs/c/Disney?utm_source=GHList&utm_medium=company">The Walt Disney Company</a></strong></td>
+<td>↳</td>
 <td>WDW Computer Science / Computer Engineering Interns - Fall 2026</td>
 <td>Celebration, FL</td>
 <td>Summer 2026, Fall 2026</td>
@@ -28073,7 +28073,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>6mo</td>
 </tr>
 <tr>
-<td><strong><a href="https://simplify.jobs/c/Disney?utm_source=GHList&utm_medium=company">The Walt Disney Company</a></strong></td>
+<td>↳</td>
 <td>WDI Show Control Hardware Intern</td>
 <td>Celebration, FL</td>
 <td>Summer 2026, Fall 2026</td>
