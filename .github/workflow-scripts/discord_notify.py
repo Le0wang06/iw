@@ -16,9 +16,6 @@ from pathlib import Path
 
 JOBS_PATH = Path("new_jobs.json")
 API = "https://discord.com/api/v10"
-ICON_URL = (
-    "https://raw.githubusercontent.com/Le0wang06/iw/main/assets/internseek-icon.png"
-)
 USER_AGENT = "InternSeek (https://github.com/Le0wang06/iw, 1.0)"
 
 TERM_RULES = [
@@ -85,17 +82,18 @@ def job_embed(it: dict, kind: str) -> dict:
     url = (it.get("url") or "").strip()
     term = infer_term(it, kind)
     rtype = role_type(it, term)
+    apply_line = f"\n[Apply]({url})" if url.startswith("http") else ""
 
     embed = {
-        "author": {"name": company[:256], "icon_url": ICON_URL},
+        "author": {"name": company[:256]},
         "title": role[:256],
         "description": (
             f"**{rtype}**\n"
             f"**Term:** {term}\n"
             f"**Location:** {loc}"
+            f"{apply_line}"
         )[:4096],
         "color": TERM_COLORS.get(term, 0x2563EB),
-        "thumbnail": {"url": ICON_URL},
         "footer": {"text": f"{source} · InternSeek"},
     }
     if url.startswith("http"):
@@ -107,6 +105,7 @@ def apply_button(it: dict) -> list:
     url = (it.get("url") or "").strip()
     if not url.startswith("http"):
         return []
+    company = (it.get("company") or "Apply").strip() or "Apply"
     return [
         {
             "type": 1,
@@ -114,7 +113,7 @@ def apply_button(it: dict) -> list:
                 {
                     "type": 2,
                     "style": 5,
-                    "label": "Apply",
+                    "label": f"Apply · {company}"[:80],
                     "url": url,
                 }
             ],
