@@ -252,8 +252,8 @@ def render_html(items: list) -> str:
         '</table>'
         '<hr style="border:0;border-top:1px solid #eee;margin:20px 0 8px;">'
         '<p style="color:#aaa;font-size:11px;margin:0;">'
-        'Sent by internship-watcher (ATS) · '
-        '<a href="https://github.com/Yash-Swaminathan/internship-watcher/actions" '
+        'Sent by iw (ATS) · '
+        '<a href="https://github.com/Le0wang06/iw/actions" '
         'style="color:#aaa;">workflow logs</a></p>'
         '</div></body></html>'
     )
