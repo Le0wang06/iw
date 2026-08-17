@@ -308,7 +308,7 @@ def main():
 
     if total:
         Path("alert.md").write_text(
-            f"@Le0wang06\n\n{plain_body}\n",
+            f"{plain_body}\n",
             encoding="utf-8",
         )
         Path("new_jobs.json").write_text(

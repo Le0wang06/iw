@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MAIL_TO: ${{ secrets.MAIL_TO }}
+      ENABLE_EMAIL: ${{ vars.ENABLE_EMAIL }}
+      ENABLE_GITHUB_ISSUES: ${{ vars.ENABLE_GITHUB_ISSUES }}
     steps:
       - name: Checkout this repo
         uses: actions/checkout@v4
@@ -57,7 +59,7 @@ jobs:
         run: python3 .github/workflow-scripts/parse_boards.py
 
       - name: Open GitHub issue if new rows found
-        if: ${{ steps.parse.outputs.total != '0' }}
+        if: ${{ steps.parse.outputs.total != '0' && env.ENABLE_GITHUB_ISSUES == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_TITLE: ${{ steps.parse.outputs.subject }}
@@ -74,7 +76,7 @@ jobs:
         run: python3 .github/workflow-scripts/discord_notify.py
 
       - name: Send email if new rows found
-        if: ${{ steps.parse.outputs.total != '0' && env.MAIL_TO != '' }}
+        if: ${{ steps.parse.outputs.total != '0' && env.ENABLE_EMAIL == 'true' && env.MAIL_TO != '' }}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com

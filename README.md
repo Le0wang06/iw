@@ -1,6 +1,6 @@
 # iw
 
-GitHub Actions bot that posts new internship / new-grad listings to **Discord** and opens a GitHub issue. Email is optional.
+GitHub Actions bot that posts new internship / new-grad listings to **Discord**. Email and GitHub issues are optional.
 
 It checks **every 5 minutes** (GitHub’s fastest built-in schedule). [cron-job.org](https://cron-job.org/en/) can ping even faster (boards every 2 minutes) via `repository_dispatch`.
 
@@ -17,22 +17,24 @@ It checks **every 5 minutes** (GitHub’s fastest built-in schedule). [cron-job.
 | [aprameyak/2027-tech-jobs](https://github.com/aprameyak/2027-tech-jobs) | Summer + **off-cycle / Winter 2027** community list |
 | 227 company ATS boards | Greenhouse / Lever / Ashby intern and co-op roles |
 
-When something new is found, Discord is pinged and a GitHub issue is opened mentioning `@Le0wang06`. Email is off unless you set the optional `MAIL_*` secrets.
+When something new is found, Discord is pinged. Email and GitHub issues stay off unless you opt in.
 
 The first run after adding sources records the current boards without emailing the backlog. After that, only **new** postings are sent.
 
 ## Alerts
 
-Default: **Discord** + a GitHub issue. Quiet checks do nothing.
+Default: **Discord only**. Quiet checks do nothing.
 
-| Secret | Required | What it is |
+| Name | Required | What it is |
 | --- | --- | --- |
-| `DISCORD_CHANNEL_ID` | yes, for Discord | Channel the bot should post in |
-| `DISCORD_BOT_TOKEN` | yes, for Discord | Bot token from the Developer Portal **Bot** tab (not the client secret) |
-| `DISCORD_WEBHOOK_URL` | alternative | Incoming webhook URL if you do not want a bot |
-| `MAIL_TO` | optional | Address to email. Leave unset to skip mail |
-| `MAIL_USERNAME` | optional | SMTP username (Gmail address) |
-| `MAIL_PASSWORD` | optional | Gmail app password |
+| `DISCORD_CHANNEL_ID` (secret) | yes, for Discord | Channel the bot should post in |
+| `DISCORD_BOT_TOKEN` (secret) | yes, for Discord | Bot token from the Developer Portal **Bot** tab (not the client secret) |
+| `DISCORD_WEBHOOK_URL` (secret) | alternative | Incoming webhook URL if you do not want a bot |
+| `ENABLE_EMAIL` (variable) | optional | Set to `true` plus `MAIL_*` secrets to send SMTP mail |
+| `MAIL_TO` (secret) | optional | Address to email |
+| `MAIL_USERNAME` (secret) | optional | SMTP username (Gmail address) |
+| `MAIL_PASSWORD` (secret) | optional | Gmail app password |
+| `ENABLE_GITHUB_ISSUES` (variable) | optional | Set to `true` to also open a GitHub issue per alert |
 
 **Internship Board Watcher** and **ATS Board Watcher** still run on GitHub’s 5-minute schedule (and faster via cron-job.org).
 
