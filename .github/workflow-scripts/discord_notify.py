@@ -16,7 +16,7 @@ from pathlib import Path
 
 JOBS_PATH = Path("new_jobs.json")
 API = "https://discord.com/api/v10"
-USER_AGENT = "InternSeek (https://github.com/Le0wang06/iw, 1.0)"
+USER_AGENT = "InternMonkey (https://github.com/Le0wang06/iw, 1.0)"
 
 TERM_RULES = [
     (re.compile(r"winter\s*2027|off[- ]season|off[- ]cycle", re.I), "Winter 2027"),
@@ -94,7 +94,7 @@ def job_embed(it: dict, kind: str) -> dict:
             f"{apply_line}"
         )[:4096],
         "color": TERM_COLORS.get(term, 0x2563EB),
-        "footer": {"text": f"{source} · InternSeek"},
+        "footer": {"text": f"{source} · InternMonkey"},
     }
     if url.startswith("http"):
         embed["url"] = url
