@@ -1,6 +1,6 @@
 # iw
 
-GitHub Actions bot that emails **Leo** (`098leowang@gmail.com`) when new internship / new-grad listings show up.
+GitHub Actions bot that posts new internship / new-grad listings to **Discord** and opens a GitHub issue. Email is optional.
 
 It checks **every 5 minutes** (GitHub’s fastest built-in schedule). [cron-job.org](https://cron-job.org/en/) can ping even faster (boards every 2 minutes) via `repository_dispatch`.
 
@@ -17,23 +17,24 @@ It checks **every 5 minutes** (GitHub’s fastest built-in schedule). [cron-job.
 | [aprameyak/2027-tech-jobs](https://github.com/aprameyak/2027-tech-jobs) | Summer + **off-cycle / Winter 2027** community list |
 | 227 company ATS boards | Greenhouse / Lever / Ashby intern and co-op roles |
 
-When something new is found, Discord is pinged, an HTML email goes to **098leowang@gmail.com**, and a GitHub issue is opened mentioning `@Le0wang06`.
+When something new is found, Discord is pinged and a GitHub issue is opened mentioning `@Le0wang06`. Email is off unless you set the optional `MAIL_*` secrets.
 
 The first run after adding sources records the current boards without emailing the backlog. After that, only **new** postings are sent.
 
-## Status
+## Alerts
 
-Mail and Actions are already configured:
+Default: **Discord** + a GitHub issue. Quiet checks do nothing.
 
-| Secret | Value |
-| --- | --- |
-| `MAIL_USERNAME` | `098leowang@gmail.com` |
-| `MAIL_TO` | `098leowang@gmail.com` |
-| `MAIL_PASSWORD` | Gmail app password (stored in GitHub Actions secrets) |
-| `DISCORD_CHANNEL_ID` | Channel the bot should post in |
-| `DISCORD_BOT_TOKEN` | Bot token from the Discord Developer Portal **Bot** tab (not the client secret) |
+| Secret | Required | What it is |
+| --- | --- | --- |
+| `DISCORD_CHANNEL_ID` | yes, for Discord | Channel the bot should post in |
+| `DISCORD_BOT_TOKEN` | yes, for Discord | Bot token from the Developer Portal **Bot** tab (not the client secret) |
+| `DISCORD_WEBHOOK_URL` | alternative | Incoming webhook URL if you do not want a bot |
+| `MAIL_TO` | optional | Address to email. Leave unset to skip mail |
+| `MAIL_USERNAME` | optional | SMTP username (Gmail address) |
+| `MAIL_PASSWORD` | optional | Gmail app password |
 
-**Internship Board Watcher** runs every 5 minutes. **ATS Board Watcher** runs every 5 minutes, offset by 2 minutes. Quiet checks do not send mail.
+**Internship Board Watcher** and **ATS Board Watcher** still run on GitHub’s 5-minute schedule (and faster via cron-job.org).
 
 To go faster than GitHub’s 5-minute floor, create a free [cron-job.org](https://console.cron-job.org/) account, make an API key under Settings, then:
 
