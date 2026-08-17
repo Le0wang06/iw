@@ -2,8 +2,10 @@ name: ATS Board Watcher
 
 on:
   schedule:
-    - cron: '15,45 * * * *'   # every 30 min, offset from the Simplify watcher
+    - cron: '2-59/5 * * * *'   # every 5 min, offset from the board watcher
   workflow_dispatch:
+  repository_dispatch:
+    types: [iw-cron-ats]
 
 permissions:
   contents: write

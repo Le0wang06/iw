@@ -2,8 +2,10 @@ name: Internship Board Watcher
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # every 30 minutes
-  workflow_dispatch:          # lets you trigger it manually to test
+    - cron: '*/5 * * * *'   # every 5 minutes (GitHub's fastest schedule)
+  workflow_dispatch:
+  repository_dispatch:
+    types: [iw-cron-boards]
 
 permissions:
   contents: write

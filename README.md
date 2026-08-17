@@ -2,7 +2,7 @@
 
 GitHub Actions bot that emails **Leo** (`098leowang@gmail.com`) when new internship / new-grad listings show up.
 
-It checks **every 30 minutes** across the public lists that actually publish feeds we can poll:
+It checks **every 5 minutes** (GitHub’s fastest built-in schedule). [cron-job.org](https://cron-job.org/en/) can ping even faster (boards every 2 minutes) via `repository_dispatch`.
 
 | Source | What you get |
 | --- | --- |
@@ -31,7 +31,17 @@ Mail and Actions are already configured:
 | `MAIL_TO` | `098leowang@gmail.com` |
 | `MAIL_PASSWORD` | Gmail app password (stored in GitHub Actions secrets) |
 
-**Internship Board Watcher** runs at `:00` and `:30`. **ATS Board Watcher** runs at `:15` and `:45`. Quiet checks do not send mail.
+**Internship Board Watcher** runs every 5 minutes. **ATS Board Watcher** runs every 5 minutes, offset by 2 minutes. Quiet checks do not send mail.
+
+To go faster than GitHub’s 5-minute floor, create a free [cron-job.org](https://console.cron-job.org/) account, make an API key under Settings, then:
+
+```powershell
+$env:CRON_JOB_API_KEY = "your-cron-job-org-api-key"
+$env:GH_TOKEN = "github-token-with-actions-write-on-this-repo"
+python .github/workflow-scripts/register_cronjob_org.py
+```
+
+That registers two HTTP POST jobs: boards every 2 minutes, ATS every 5 minutes.
 
 ## Adding ATS companies
 
