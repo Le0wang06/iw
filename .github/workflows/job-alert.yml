@@ -23,8 +23,8 @@ jobs:
       - name: Fetch latest versions of both boards
         run: |
           mkdir -p snapshots
-          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/README.md -o current-main.md
-          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2026-Internships/dev/README-Off-Season.md -o current-offseason.md
+          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md -o current-main.md
+          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md -o current-offseason.md
 
       - name: Parse boards and build email
         id: parse

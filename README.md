@@ -1,29 +1,27 @@
 # iw
 
-GitHub Actions bot that alerts **Leo** (`@Le0wang06`) when new software engineering internship listings show up.
+GitHub Actions bot that emails **Leo** (`098leowang@gmail.com`) when new software engineering internship listings show up.
 
-It checks two sources every 30 minutes (and can be run by hand from the Actions tab):
+It checks two sources every 30 minutes:
 
-1. **SimplifyJobs boards** — Summer 2026/2027 main list and off-season list. Only **Software Engineering** rows with an active Apply link are alerted.
-2. **Company ATS boards** — Greenhouse, Lever, and Ashby postings for **227 companies**. Filters to US intern / co-op roles that look like backend, infra, DevOps, or general SWE (frontend, mobile, hardware, and similar titles are skipped). ATS listings often appear before they land on LinkedIn or the Simplify boards.
+1. **SimplifyJobs boards** — [Summer 2027](https://github.com/SimplifyJobs/Summer2027-Internships) main list and off-season list. Only **Software Engineering** rows with an active Apply link are alerted.
+2. **Company ATS boards** — Greenhouse, Lever, and Ashby postings for **227 companies**. Filters to US intern / co-op roles that look like backend, infra, DevOps, or general SWE.
 
-When something new is found:
-
-- A GitHub issue is opened and `@Le0wang06` is mentioned (this is the default alert path).
-- If `MAIL_PASSWORD` is set, an HTML email also goes to **098leowang@gmail.com**.
+When something new is found, an HTML email goes to **098leowang@gmail.com**. A GitHub issue is also opened and `@Le0wang06` is mentioned.
 
 Seen listings are stored under `snapshots/` so the same role is not alerted twice.
 
-## Setup (this repo)
+## Status
 
-`MAIL_USERNAME` and `MAIL_TO` are already set to `098leowang@gmail.com`.
+Mail and Actions are already configured on this repo:
 
-To also get Gmail (not just GitHub issue notifications):
+| Secret | Value |
+| --- | --- |
+| `MAIL_USERNAME` | `098leowang@gmail.com` |
+| `MAIL_TO` | `098leowang@gmail.com` |
+| `MAIL_PASSWORD` | Gmail app password (stored in GitHub Actions secrets) |
 
-1. Create a Gmail [app password](https://support.google.com/accounts/answer/185833) (Google Account → Security → 2-Step Verification → App passwords).
-2. Add it as the repository secret `MAIL_PASSWORD` at [Settings → Secrets](https://github.com/Le0wang06/iw/settings/secrets/actions). Use the app password, not your normal Gmail password.
-
-Both workflows are enabled on a 30-minute schedule.
+**Internship Board Watcher** runs at `:00` and `:30`. **ATS Board Watcher** runs at `:15` and `:45`. Quiet checks do not send mail.
 
 ## Adding companies
 
@@ -49,4 +47,4 @@ snapshots/                  last-seen board state (committed by Actions)
 
 ## Credit
 
-Board listings come from [SimplifyJobs](https://github.com/SimplifyJobs/Summer2026-Internships). Recreated from [internship-watcher](https://github.com/Yash-Swaminathan/internship-watcher) with permission.
+Board listings come from [SimplifyJobs](https://github.com/SimplifyJobs/Summer2027-Internships). Recreated from [internship-watcher](https://github.com/Yash-Swaminathan/internship-watcher) with permission.

@@ -208,8 +208,8 @@ def render_html(new_main: list, new_off: list) -> str:
         f'<h1 style="font-size:18px;margin:0 0 4px;color:#111;">'
         f'{total} new internship listing{"s" if total != 1 else ""}</h1>'
         '<p style="font-size:12px;color:#888;margin:0 0 8px;">'
-        'Software engineering roles on the SimplifyJobs Summer 2026 boards.</p>'
-        f'{section("Main Board (Summer 2026)", new_main)}'
+        'Software engineering roles on the SimplifyJobs Summer 2027 boards.</p>'
+        f'{section("Main Board (Summer 2027)", new_main)}'
         f'{section("Off-Season Board", new_off)}'
         '<hr style="border:0;border-top:1px solid #eee;margin:20px 0 8px;">'
         '<p style="color:#aaa;font-size:11px;margin:0;">'
@@ -223,7 +223,7 @@ def render_html(new_main: list, new_off: list) -> str:
 def render_plain(new_main: list, new_off: list) -> str:
     total = len(new_main) + len(new_off)
     lines = [f"{total} new internship listing(s)", ""]
-    for title, items in [("MAIN BOARD (Summer 2026)", new_main), ("OFF-SEASON BOARD", new_off)]:
+    for title, items in [("MAIN BOARD (Summer 2027)", new_main), ("OFF-SEASON BOARD", new_off)]:
         lines.append(f"== {title}: {len(items)} new ==")
         if not items:
             lines.append("  (none)")
