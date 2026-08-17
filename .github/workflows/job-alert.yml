@@ -34,6 +34,19 @@ jobs:
             || echo "" > current-vansh-off.md
           curl -fsSL https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json -o current-applyguy.json \
             || echo '{"jobs":[]}' > current-applyguy.json
+          curl -fsSL https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/README.md -o current-vansh-ng.md \
+            || curl -fsSL https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md -o current-vansh-ng.md \
+            || echo "" > current-vansh-ng.md
+          curl -fsSL https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json -o current-zshah.json \
+            || echo '{"jobs":[]}' > current-zshah.json
+          curl -fsSL https://ambicuity.github.io/New-Grad-Jobs/jobs.json -o current-ambicuity.json \
+            || echo '{"jobs":[]}' > current-ambicuity.json
+          curl -fsSL https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/README.md -o current-speedy-swe.md \
+            || echo "" > current-speedy-swe.md
+          curl -fsSL https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/README.md -o current-speedy-ai.md \
+            || echo "" > current-speedy-ai.md
+          curl -fsSL https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md -o current-aprameyak.md \
+            || echo "" > current-aprameyak.md
 
       - name: Parse boards and build email
         id: parse
@@ -69,6 +82,12 @@ jobs:
           cp current-vansh.md snapshots/previous-vansh.md
           cp current-vansh-off.md snapshots/previous-vansh-off.md
           cp current-applyguy.json snapshots/previous-applyguy.json
+          cp current-vansh-ng.md snapshots/previous-vansh-ng.md
+          cp current-zshah.json snapshots/previous-zshah.json
+          cp current-ambicuity.json snapshots/previous-ambicuity.json
+          cp current-speedy-swe.md snapshots/previous-speedy-swe.md
+          cp current-speedy-ai.md snapshots/previous-speedy-ai.md
+          cp current-aprameyak.md snapshots/previous-aprameyak.md
           cp current-summer.md snapshots/previous-main.md
 
       - name: Commit updated snapshots

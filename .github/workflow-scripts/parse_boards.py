@@ -19,7 +19,15 @@ WHITESPACE_RE = re.compile(r"\s+")
 
 SEEN_PATH = "snapshots/seen.json"
 VERSION_PATH = "snapshots/watch-version.json"
-WATCH_VERSION = 2
+WATCH_VERSION = 3
+
+EARLY_ROLE_RE = re.compile(
+    r"intern|co[- ]?op|new[- ]?grad|university grad|early career|"
+    r"entry[- ]level|graduate (software|engineer)|engineer i\b|"
+    r"software engineer 1\b|associate software",
+    re.I,
+)
+BARE_URL_RE = re.compile(r"https?://[^\s)<>\"']+")
 
 BOARDS = [
     {
@@ -53,10 +61,47 @@ BOARDS = [
         "parser": "markdown",
     },
     {
+        "key": "vansh_ng",
+        "file": "current-vansh-ng.md",
+        "title": "New Grad 2027 · Vansh",
+        "parser": "markdown",
+    },
+    {
         "key": "applyguy",
         "file": "current-applyguy.json",
         "title": "ApplyGuy 2027 (all seasons)",
-        "parser": "applyguy",
+        "parser": "jobsjson",
+    },
+    {
+        "key": "zshah",
+        "file": "current-zshah.json",
+        "title": "Workday + extra ATS · zshah101",
+        "parser": "jobsjson",
+    },
+    {
+        "key": "ambicuity",
+        "file": "current-ambicuity.json",
+        "title": "New Grad / early career · ambicuity",
+        "parser": "jobsjson",
+        "early_only": True,
+    },
+    {
+        "key": "speedy_swe",
+        "file": "current-speedy-swe.md",
+        "title": "SpeedyApply SWE internships",
+        "parser": "markdown",
+    },
+    {
+        "key": "speedy_ai",
+        "file": "current-speedy-ai.md",
+        "title": "SpeedyApply AI/ML internships",
+        "parser": "markdown",
+    },
+    {
+        "key": "aprameyak",
+        "file": "current-aprameyak.md",
+        "title": "2027 Tech Jobs (incl. Winter off-cycle)",
+        "parser": "markdown",
     },
 ]
 
@@ -148,47 +193,74 @@ def parse_markdown(path: str) -> dict:
             last_company = company_name
         role = strip_html(cols[1])
         location = strip_html(cols[2])
-        apply_cell = cols[3]
-        hrefs = [h for h, _ in ANCHOR_RE.findall(apply_cell)]
-        hrefs += [url for _, url in MD_LINK_RE.findall(apply_cell)]
-        apply_url = hrefs[0] if hrefs else ""
+        blob = " ".join(cols)
+        hrefs = [h for h, _ in ANCHOR_RE.findall(blob)]
+        hrefs += [url for _, url in MD_LINK_RE.findall(blob)]
+        hrefs += BARE_URL_RE.findall(blob)
+        apply_url = next((u for u in hrefs if u.startswith("http")), "")
         if not apply_url or "🔒" in line:
             continue
+        terms = ""
+        for col in cols[3:]:
+            cell = strip_html(col)
+            if re.search(r"winter|spring|summer|fall|2026|2027", cell, re.I):
+                terms = cell
+                break
         rid = row_id(line, company_name, role, location, apply_url)
         rows[rid] = {
             "company": company_name,
             "role": role,
             "location": location,
             "apply_url": apply_url,
-            "terms": strip_html(cols[4]) if len(cols) >= 5 else "",
+            "terms": terms,
         }
     return rows
 
 
-def parse_applyguy(path: str) -> dict:
+def _jobs_list(data):
+    if isinstance(data, list):
+        return data
+    if isinstance(data, dict):
+        for key in ("jobs", "items", "results", "data"):
+            val = data.get(key)
+            if isinstance(val, list):
+                return val
+            if isinstance(val, dict) and isinstance(val.get("jobs"), list):
+                return val["jobs"]
+    return []
+
+
+def parse_jobs_json(path: str, early_only: bool = False) -> dict:
     if not os.path.exists(path):
         return {}
     try:
         data = json.loads(Path(path).read_text(encoding="utf-8", errors="replace"))
     except (ValueError, OSError):
         return {}
-    jobs = data.get("jobs", data if isinstance(data, list) else [])
     rows = {}
-    for job in jobs:
+    for job in _jobs_list(data):
+        if not isinstance(job, dict) or job.get("is_closed"):
+            continue
         company = str(job.get("company") or "").strip()
         role = str(job.get("title") or job.get("role") or "").strip()
         location = str(job.get("location") or "").strip()
         apply_url = str(job.get("listingUrl") or job.get("url") or "").strip()
         if not company or not role or not apply_url:
             continue
+        if early_only and not EARLY_ROLE_RE.search(role):
+            continue
+        category = job.get("category")
+        if isinstance(category, dict):
+            category = category.get("name") or ""
+        terms = str(job.get("season") or category or job.get("program") or "")
         jid = str(job.get("id") or apply_url)
-        rid = "ag:" + jid
+        rid = "j:" + jid
         rows[rid] = {
             "company": company,
             "role": role,
             "location": location,
             "apply_url": apply_url,
-            "terms": str(job.get("season") or job.get("category") or ""),
+            "terms": terms,
         }
     return rows
 
@@ -196,12 +268,15 @@ def parse_applyguy(path: str) -> dict:
 PARSERS = {
     "simplify": parse_simplify,
     "markdown": parse_markdown,
-    "applyguy": parse_applyguy,
+    "jobsjson": parse_jobs_json,
 }
 
 
 def parse_board(board: dict) -> dict:
-    return PARSERS[board["parser"]](board["file"])
+    parser = PARSERS[board["parser"]]
+    if board["parser"] == "jobsjson":
+        return parser(board["file"], early_only=board.get("early_only", False))
+    return parser(board["file"])
 
 
 def load_seen() -> tuple:
