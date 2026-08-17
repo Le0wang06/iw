@@ -1,6 +1,5 @@
 """Poll company ATS boards (Greenhouse / Lever / Ashby) for new US
-backend / infrastructure / DevOps intern roles and emit an email via
-GITHUB_OUTPUT, mirroring parse_boards.py.
+intern / co-op roles and emit an email via GITHUB_OUTPUT.
 
 Postings hit the ATS before LinkedIn or the SimplifyJobs boards pick them
 up, so this is the fastest signal. Companies live in ats_companies.json.
@@ -19,42 +18,17 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 COMPANIES_PATH = SCRIPT_DIR / "ats_companies.json"
 SEEN_PATH = Path("snapshots/ats-seen.json")
+VERSION_PATH = Path("snapshots/ats-watch-version.json")
+WATCH_VERSION = 2
 
 INTERN_RE = re.compile(r"\bintern(ship)?\b|\bco[- ]?op\b", re.I)
 
-# Backend-shaped titles. Generic "Software Engineer Intern" counts — big
-# companies rarely label the specialization — and the exclude list below
-# strips the ones that declare a non-backend focus.
-ROLE_RE = re.compile(
-    r"back[- ]?end|server|infrastructure|\binfra\b|platform|dev[- ]?ops|"
-    r"site reliability|\bsre\b|cloud|distributed|full[- ]?stack|"
-    r"software (engineer|engineering|developer|development)|\bswe\b",
-    re.I,
-)
-
+# Keep out non-tech recruiting noise. Everything else intern-shaped is kept:
+# SWE, frontend, mobile, data, PM, hardware, ML, security, quant, etc.
 EXCLUDE_RE = re.compile(
-    r"front[- ]?end|mobile|\bios\b|android|data scien|data analy|"
-    r"analytics|business|"
-    r"hardware|electrical|mechanical|manufactur|embedded|firmware|silicon|"
-    r"\basic\b|fpga|\brf\b|optic|quality|\bqa\b|\btest\b|security|"
-    r"research (scientist|engineer)|design(er)?\b|\bui\b|\bux\b|graphics|"
-    r"product manag|marketing|"
-    r"sales|solutions|support|success|recruit|people|legal|finance|"
-    r"accounting|supply chain",
-    re.I,
-)
-
-# AI/ML terms only disqualify when the title isn't clearly a software
-# engineering role — "Software Engineer Intern, AI Platform" is a backend
-# role, "Machine Learning Intern" is not.
-AI_EXCLUDE_RE = re.compile(
-    r"machine learning|\bml\b|\bai\b|artificial intelligence|deep learning",
-    re.I,
-)
-
-SWE_RE = re.compile(
-    r"software (engineer|engineering|developer|development)|back[- ]?end|"
-    r"infrastructure|\binfra\b|dev[- ]?ops|site reliability|\bsre\b",
+    r"\bsales\b|account executive|recruiter|recruiting intern|"
+    r"people (ops|partner)|human resources|\bhr intern\b|"
+    r"legal intern|paralegal|accounting intern|facilities intern",
     re.I,
 )
 
@@ -106,11 +80,9 @@ WHITESPACE_RE = re.compile(r"\s+")
 
 
 def wanted_title(title: str) -> bool:
-    if not (INTERN_RE.search(title) and ROLE_RE.search(title)):
+    if not INTERN_RE.search(title):
         return False
     if EXCLUDE_RE.search(title):
-        return False
-    if AI_EXCLUDE_RE.search(title) and not SWE_RE.search(title):
         return False
     return True
 
@@ -242,10 +214,10 @@ def render_html(items: list) -> str:
         '<div style="max-width:640px;margin:0 auto;background:#fff;padding:24px;'
         'border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">'
         f'<h1 style="font-size:18px;margin:0 0 4px;color:#111;">'
-        f'{len(items)} new backend/infra intern role{"s" if len(items) != 1 else ""}</h1>'
+        f'{len(items)} new intern role{"s" if len(items) != 1 else ""}</h1>'
         '<p style="font-size:12px;color:#888;margin:0 0 8px;">'
         'Straight from company ATS boards (Greenhouse / Lever / Ashby) — '
-        'usually before LinkedIn.</p>'
+        'intern / co-op roles, all functions.</p>'
         '<table cellpadding="0" cellspacing="0" border="0" '
         'style="width:100%;border-collapse:collapse;">'
         + "\n".join(rows) +
@@ -260,7 +232,7 @@ def render_html(items: list) -> str:
 
 
 def render_plain(items: list) -> str:
-    lines = [f"{len(items)} new backend/infra intern role(s)", ""]
+    lines = [f"{len(items)} new intern role(s)", ""]
     for it in items:
         lines.append(f"  {it['company']} - {it['title']}")
         lines.append(f"    Location: {it['location'] or '(not listed)'}")
@@ -275,7 +247,16 @@ def build_subject(items: list) -> str:
     preview = ", ".join(unique[:3])
     suffix = f" +{len(unique) - 3} more" if len(unique) > 3 else ""
     plural = "s" if len(items) != 1 else ""
-    return f"{len(items)} new backend intern role{plural} (ATS): {preview}{suffix}"
+    return f"{len(items)} new intern role{plural} (ATS): {preview}{suffix}"
+
+
+def load_ats_version() -> int:
+    if not VERSION_PATH.exists():
+        return 1
+    try:
+        return int(json.loads(VERSION_PATH.read_text(encoding="utf-8")).get("version", 1))
+    except (ValueError, OSError, TypeError):
+        return 1
 
 
 def main():
@@ -288,6 +269,7 @@ def main():
             seen = set(json.loads(SEEN_PATH.read_text(encoding="utf-8")))
         except (ValueError, OSError):
             first_run = True
+    reseeding = first_run or load_ats_version() < WATCH_VERSION
 
     new, shown = [], set()
     for it in matches:
@@ -307,14 +289,17 @@ def main():
     SEEN_PATH.write_text(
         json.dumps(sorted(seen), indent=0) + "\n", encoding="utf-8"
     )
+    VERSION_PATH.write_text(
+        json.dumps({"version": WATCH_VERSION}) + "\n", encoding="utf-8"
+    )
 
-    if first_run:
-        # No history: record current state without emailing.
+    if reseeding:
+        # No history, or the match filter just expanded: record without emailing.
         new = []
 
     print(f"Matches: {len(matches)} across boards, failed_boards={len(failed)} "
           f"{failed if failed else ''}")
-    print(f"New: {len(new)} first_run={'yes' if first_run else 'no'}")
+    print(f"New: {len(new)} reseeding={'yes' if reseeding else 'no'}")
 
     total = len(new)
     subject = build_subject(new)

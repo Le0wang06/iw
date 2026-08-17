@@ -50,7 +50,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add snapshots/ats-seen.json
+          git add snapshots/ats-seen.json snapshots/ats-watch-version.json
           git diff --quiet && git diff --staged --quiet || git commit -m "Update ATS seen state"
           git pull --rebase origin main
           git push

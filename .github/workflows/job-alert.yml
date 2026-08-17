@@ -20,11 +20,20 @@ jobs:
       - name: Checkout this repo
         uses: actions/checkout@v4
 
-      - name: Fetch latest versions of both boards
+      - name: Fetch latest versions of every board
         run: |
           mkdir -p snapshots
-          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md -o current-main.md
-          curl -s https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md -o current-offseason.md
+          curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md -o current-summer.md
+          curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md -o current-offseason.md
+          curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md -o current-newgrad.md \
+            || curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/main/README.md -o current-newgrad.md \
+            || echo "" > current-newgrad.md
+          curl -fsSL https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/README.md -o current-vansh.md \
+            || echo "" > current-vansh.md
+          curl -fsSL https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md -o current-vansh-off.md \
+            || echo "" > current-vansh-off.md
+          curl -fsSL https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json -o current-applyguy.json \
+            || echo '{"jobs":[]}' > current-applyguy.json
 
       - name: Parse boards and build email
         id: parse
@@ -54,8 +63,13 @@ jobs:
 
       - name: Save new snapshots for next run
         run: |
-          cp current-main.md snapshots/previous-main.md
+          cp current-summer.md snapshots/previous-summer.md
           cp current-offseason.md snapshots/previous-offseason.md
+          cp current-newgrad.md snapshots/previous-newgrad.md
+          cp current-vansh.md snapshots/previous-vansh.md
+          cp current-vansh-off.md snapshots/previous-vansh-off.md
+          cp current-applyguy.json snapshots/previous-applyguy.json
+          cp current-summer.md snapshots/previous-main.md
 
       - name: Commit updated snapshots
         run: |

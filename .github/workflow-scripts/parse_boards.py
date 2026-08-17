@@ -7,37 +7,58 @@ from pathlib import Path
 
 TR_RE = re.compile(r"<tr>(.*?)</tr>", re.DOTALL)
 TD_RE = re.compile(r"<td[^>]*>(.*?)</td>", re.DOTALL)
-COMPANY_RE = re.compile(
-    r'<a\s+href="(https://simplify\.jobs/c/[^"]+)"[^>]*>([^<]+)</a>'
-)
+ANCHOR_RE = re.compile(r'<a\s+href="([^"]+)"[^>]*>(.*?)</a>', re.DOTALL | re.IGNORECASE)
 APPLY_RE = re.compile(
     r'<a\s+href="([^"]+)"[^>]*>\s*<img[^>]*alt="Apply"',
     re.IGNORECASE,
 )
 POSTING_RE = re.compile(r"https://simplify\.jobs/p/([0-9a-fA-F-]{36})")
+MD_LINK_RE = re.compile(r"\[([^\]]*)\]\((https?://[^)]+)\)")
 TAG_RE = re.compile(r"<[^>]+>")
 WHITESPACE_RE = re.compile(r"\s+")
 
 SEEN_PATH = "snapshots/seen.json"
+VERSION_PATH = "snapshots/watch-version.json"
+WATCH_VERSION = 2
 
-# Both boards group listings under "## <emoji> <Category> Internship Roles"
-# headers. Only the Software Engineering section should produce alerts —
-# Product, Data Science/AI/ML, Quant, and Hardware rows are skipped.
-SWE_SECTION_RE = re.compile(
-    r"^##[^\n]*Software Engineering Internship Roles(.*?)(?=^## |\Z)",
-    re.DOTALL | re.MULTILINE,
-)
-
-
-def swe_section(text: str) -> str:
-    m = SWE_SECTION_RE.search(text)
-    if m:
-        return m.group(1)
-    # Header not found (board format changed): fall back to the whole file
-    # so new roles are never silently dropped.
-    print("WARNING: Software Engineering section header not found; "
-          "parsing entire board", file=sys.stderr)
-    return text
+BOARDS = [
+    {
+        "key": "summer",
+        "file": "current-summer.md",
+        "title": "Summer 2027 · Simplify",
+        "parser": "simplify",
+    },
+    {
+        "key": "offseason",
+        "file": "current-offseason.md",
+        "title": "Off-Season / Winter 2027 · Simplify",
+        "parser": "simplify",
+    },
+    {
+        "key": "newgrad",
+        "file": "current-newgrad.md",
+        "title": "New Grad · Simplify",
+        "parser": "simplify",
+    },
+    {
+        "key": "vansh",
+        "file": "current-vansh.md",
+        "title": "Summer 2027 · Vansh & Ouckah",
+        "parser": "markdown",
+    },
+    {
+        "key": "vansh_off",
+        "file": "current-vansh-off.md",
+        "title": "Off-Season / Winter 2027 · Vansh & Ouckah",
+        "parser": "markdown",
+    },
+    {
+        "key": "applyguy",
+        "file": "current-applyguy.json",
+        "title": "ApplyGuy 2027 (all seasons)",
+        "parser": "applyguy",
+    },
+]
 
 
 def strip_html(fragment: str) -> str:
@@ -48,8 +69,6 @@ def strip_html(fragment: str) -> str:
 
 
 def row_id(block: str, company: str, role: str, location: str, apply_url: str) -> str:
-    # The simplify.jobs/p/<uuid> link is the only identifier that survives
-    # edits to the row's text (role renamed, locations added, 🎓 tags, etc.).
     m = POSTING_RE.search(block)
     if m:
         return "p:" + m.group(1).lower()
@@ -60,16 +79,11 @@ def row_id(block: str, company: str, role: str, location: str, apply_url: str) -
     return "t:" + WHITESPACE_RE.sub(" ", slug).strip()
 
 
-def parse_rows(path: str) -> dict:
-    """Return {stable_id: row} for every ACTIVE listing in the board file.
-
-    Rows without an Apply link are closed/archived listings (the boards embed
-    an "Inactive roles" archive with thousands of old rows) and are skipped —
-    they were the source of old internships being emailed as new.
-    """
+def parse_simplify(path: str) -> dict:
+    """Active listings from Simplify-style HTML tables. All categories."""
     if not os.path.exists(path):
         return {}
-    text = swe_section(Path(path).read_text(encoding="utf-8", errors="replace"))
+    text = Path(path).read_text(encoding="utf-8", errors="replace")
     rows = {}
     last_company = None
     for block in TR_RE.findall(text):
@@ -77,9 +91,9 @@ def parse_rows(path: str) -> dict:
         if len(tds) < 4:
             continue
         first_td_stripped = strip_html(tds[0])
-        m = COMPANY_RE.search(tds[0])
-        if m:
-            company_name = strip_html(m.group(2))
+        anchors = ANCHOR_RE.findall(tds[0])
+        if anchors:
+            company_name = strip_html(anchors[0][1])
             last_company = company_name
         elif "↳" in first_td_stripped and last_company:
             company_name = last_company
@@ -87,36 +101,139 @@ def parse_rows(path: str) -> dict:
             continue
         role = strip_html(tds[1])
         location = strip_html(tds[2])
-        # The apply cell is tds[3] on the main board but tds[4] on the
-        # off-season board (extra "Terms" column), so search the whole row.
+        terms = strip_html(tds[3]) if len(tds) >= 5 else ""
         apply_match = APPLY_RE.search(block)
-        if not apply_match or "🔒" in block:
+        if not apply_match:
+            hrefs = [href for href, _ in ANCHOR_RE.findall(block)]
+            hrefs = [h for h in hrefs if "simplify.jobs/c/" not in h]
+            apply_url = hrefs[-1] if hrefs else ""
+        else:
+            apply_url = apply_match.group(1)
+        if not apply_url or "🔒" in block:
             continue
-        apply_url = apply_match.group(1)
         rid = row_id(block, company_name, role, location, apply_url)
         rows[rid] = {
             "company": company_name,
             "role": role,
             "location": location,
             "apply_url": apply_url,
+            "terms": terms,
         }
     return rows
 
 
+def parse_markdown(path: str) -> dict:
+    """Markdown tables used by Vansh/Ouckah and similar lists."""
+    if not os.path.exists(path):
+        return {}
+    text = Path(path).read_text(encoding="utf-8", errors="replace")
+    rows = {}
+    last_company = None
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|"):
+            continue
+        cols = [c.strip() for c in stripped.strip("|").split("|")]
+        if len(cols) < 4:
+            continue
+        if cols[0].lower() in {"company", "name"}:
+            continue
+        if set(cols[0]) <= set("-: "):
+            continue
+        company_raw = strip_html(cols[0])
+        if "↳" in company_raw and last_company:
+            company_name = last_company
+        else:
+            company_name = company_raw
+            last_company = company_name
+        role = strip_html(cols[1])
+        location = strip_html(cols[2])
+        apply_cell = cols[3]
+        hrefs = [h for h, _ in ANCHOR_RE.findall(apply_cell)]
+        hrefs += [url for _, url in MD_LINK_RE.findall(apply_cell)]
+        apply_url = hrefs[0] if hrefs else ""
+        if not apply_url or "🔒" in line:
+            continue
+        rid = row_id(line, company_name, role, location, apply_url)
+        rows[rid] = {
+            "company": company_name,
+            "role": role,
+            "location": location,
+            "apply_url": apply_url,
+            "terms": strip_html(cols[4]) if len(cols) >= 5 else "",
+        }
+    return rows
+
+
+def parse_applyguy(path: str) -> dict:
+    if not os.path.exists(path):
+        return {}
+    try:
+        data = json.loads(Path(path).read_text(encoding="utf-8", errors="replace"))
+    except (ValueError, OSError):
+        return {}
+    jobs = data.get("jobs", data if isinstance(data, list) else [])
+    rows = {}
+    for job in jobs:
+        company = str(job.get("company") or "").strip()
+        role = str(job.get("title") or job.get("role") or "").strip()
+        location = str(job.get("location") or "").strip()
+        apply_url = str(job.get("listingUrl") or job.get("url") or "").strip()
+        if not company or not role or not apply_url:
+            continue
+        jid = str(job.get("id") or apply_url)
+        rid = "ag:" + jid
+        rows[rid] = {
+            "company": company,
+            "role": role,
+            "location": location,
+            "apply_url": apply_url,
+            "terms": str(job.get("season") or job.get("category") or ""),
+        }
+    return rows
+
+
+PARSERS = {
+    "simplify": parse_simplify,
+    "markdown": parse_markdown,
+    "applyguy": parse_applyguy,
+}
+
+
+def parse_board(board: dict) -> dict:
+    return PARSERS[board["parser"]](board["file"])
+
+
 def load_seen() -> tuple:
-    """Return (seen_ids, exists). Falls back to seeding from the previous
-    snapshots the first time so the switch-over doesn't spam or miss rows."""
     if os.path.exists(SEEN_PATH):
         try:
             return set(json.loads(Path(SEEN_PATH).read_text(encoding="utf-8"))), True
         except (ValueError, OSError):
             pass
     seeded = set()
-    for path in ("snapshots/previous-main.md", "snapshots/previous-offseason.md"):
-        rows = parse_rows(path)
+    for path in ("snapshots/previous-main.md", "snapshots/previous-offseason.md",
+                 "snapshots/previous-summer.md"):
+        rows = parse_simplify(path)
         seeded |= set(rows)
         seeded |= {display_id(row) for row in rows.values()}
     return seeded, False
+
+
+def load_version() -> int:
+    if not os.path.exists(VERSION_PATH):
+        return 1
+    try:
+        data = json.loads(Path(VERSION_PATH).read_text(encoding="utf-8"))
+        return int(data.get("version", 1))
+    except (ValueError, OSError, TypeError):
+        return 1
+
+
+def save_version() -> None:
+    Path(VERSION_PATH).parent.mkdir(exist_ok=True)
+    Path(VERSION_PATH).write_text(
+        json.dumps({"version": WATCH_VERSION}) + "\n", encoding="utf-8"
+    )
 
 
 def save_seen(seen: set) -> None:
@@ -136,27 +253,25 @@ def display_key(it: dict) -> tuple:
 
 
 def display_id(it: dict) -> str:
-    # Persisted alongside posting ids so a re-posted role with identical
-    # company/role/location (new req id) is never emailed a second time.
     return "d:" + "|".join(display_key(it))
 
 
-def dedupe_for_display(new_main: list, new_off: list) -> tuple:
-    """Never show the same internship twice in one email, even when it
-    appears on both boards or under multiple posting ids."""
+def dedupe_sections(sections: list) -> list:
     shown = set()
-    out_main, out_off = [], []
-    for items, out in ((new_main, out_main), (new_off, out_off)):
+    out = []
+    for title, items in sections:
+        kept = []
         for it in items:
             k = display_key(it)
             if k in shown:
                 continue
             shown.add(k)
-            out.append(it)
-    return out_main, out_off
+            kept.append(it)
+        out.append((title, kept))
+    return out
 
 
-def render_html(new_main: list, new_off: list) -> str:
+def render_html(sections: list) -> str:
     def section(title: str, items: list) -> str:
         if not items:
             return (
@@ -172,6 +287,12 @@ def render_html(new_main: list, new_off: list) -> str:
         parts.append('<table cellpadding="0" cellspacing="0" border="0" '
                      'style="width:100%;border-collapse:collapse;">')
         for it in items:
+            extra = it.get("terms") or ""
+            extra_html = (
+                f'<div style="font-size:12px;color:#2563eb;margin-top:2px;">'
+                f'{html.escape(extra)}</div>'
+                if extra else ""
+            )
             apply_cell = (
                 f'<a href="{html.escape(it["apply_url"])}" '
                 f'style="display:inline-block;padding:6px 14px;background:#2563eb;'
@@ -189,6 +310,7 @@ def render_html(new_main: list, new_off: list) -> str:
                 f'{html.escape(it["role"])}</div>'
                 f'<div style="font-size:12px;color:#666;margin-top:2px;">'
                 f'{html.escape(it["location"])}</div>'
+                f'{extra_html}'
                 '</td>'
                 '<td style="padding:10px 0;border-bottom:1px solid #eee;'
                 'vertical-align:middle;text-align:right;white-space:nowrap;">'
@@ -199,18 +321,19 @@ def render_html(new_main: list, new_off: list) -> str:
         parts.append('</table>')
         return "\n".join(parts)
 
-    total = len(new_main) + len(new_off)
+    total = sum(len(items) for _, items in sections)
+    body = "".join(section(title, items) for title, items in sections)
     return (
         '<html><body style="font-family:-apple-system,BlinkMacSystemFont,'
         '\'Segoe UI\',Roboto,sans-serif;background:#f7f7f7;margin:0;padding:20px;">'
         '<div style="max-width:640px;margin:0 auto;background:#fff;padding:24px;'
         'border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">'
         f'<h1 style="font-size:18px;margin:0 0 4px;color:#111;">'
-        f'{total} new internship listing{"s" if total != 1 else ""}</h1>'
+        f'{total} new listing{"s" if total != 1 else ""}</h1>'
         '<p style="font-size:12px;color:#888;margin:0 0 8px;">'
-        'Software engineering roles on the SimplifyJobs Summer 2027 boards.</p>'
-        f'{section("Main Board (Summer 2027)", new_main)}'
-        f'{section("Off-Season Board", new_off)}'
+        'Summer 2027, Winter 2027 / off-season, new grad, and extra boards. '
+        'All roles, not just SWE.</p>'
+        f'{body}'
         '<hr style="border:0;border-top:1px solid #eee;margin:20px 0 8px;">'
         '<p style="color:#aaa;font-size:11px;margin:0;">'
         'Sent by iw · '
@@ -220,67 +343,67 @@ def render_html(new_main: list, new_off: list) -> str:
     )
 
 
-def render_plain(new_main: list, new_off: list) -> str:
-    total = len(new_main) + len(new_off)
-    lines = [f"{total} new internship listing(s)", ""]
-    for title, items in [("MAIN BOARD (Summer 2027)", new_main), ("OFF-SEASON BOARD", new_off)]:
+def render_plain(sections: list) -> str:
+    total = sum(len(items) for _, items in sections)
+    lines = [f"{total} new listing(s)", ""]
+    for title, items in sections:
         lines.append(f"== {title}: {len(items)} new ==")
         if not items:
             lines.append("  (none)")
         for it in items:
             lines.append(f"  {it['company']} - {it['role']}")
             lines.append(f"    Location: {it['location']}")
+            if it.get("terms"):
+                lines.append(f"    Terms: {it['terms']}")
             lines.append(f"    Apply: {it['apply_url'] or '(no direct link)'}")
         lines.append("")
     return "\n".join(lines)
 
 
-def build_subject(new_main: list, new_off: list) -> str:
-    total = len(new_main) + len(new_off)
+def build_subject(sections: list) -> str:
+    items = [it for _, group in sections for it in group]
+    total = len(items)
     if total == 0:
         return "No new internship listings"
-    companies = [it["company"] for it in new_main + new_off]
-    unique = list(dict.fromkeys(companies))
-    preview = ", ".join(unique[:3])
-    suffix = f" +{len(unique) - 3} more" if len(unique) > 3 else ""
+    companies = list(dict.fromkeys(it["company"] for it in items))
+    preview = ", ".join(companies[:3])
+    suffix = f" +{len(companies) - 3} more" if len(companies) > 3 else ""
     plural = "s" if total != 1 else ""
-    return f"{total} new internship{plural}: {preview}{suffix}"
+    return f"{total} new role{plural}: {preview}{suffix}"
 
 
 def main():
-    curr_main = parse_rows("current-main.md")
-    curr_off = parse_rows("current-offseason.md")
-
     seen, had_seen_file = load_seen()
-    first_run = not had_seen_file and not seen
+    reseeding = load_version() < WATCH_VERSION or (not had_seen_file and not seen)
+
+    parsed_boards = []
+    for board in BOARDS:
+        rows = parse_board(board)
+        parsed_boards.append((board, rows))
+        print(f"Parsed {board['key']}: {len(rows)}", file=sys.stderr)
 
     def is_new(rid, row):
         return rid not in seen and display_id(row) not in seen
 
-    new_main = [row for rid, row in curr_main.items() if is_new(rid, row)]
-    new_off = [
-        row for rid, row in curr_off.items()
-        if is_new(rid, row) and rid not in curr_main
-    ]
-    new_main, new_off = dedupe_for_display(new_main, new_off)
-
-    if first_run:
-        # No history at all: record the current boards without emailing.
-        new_main, new_off = [], []
-
-    for rows in (curr_main, curr_off):
+    sections = []
+    for board, rows in parsed_boards:
+        new_items = [row for rid, row in rows.items() if is_new(rid, row)]
+        if reseeding:
+            new_items = []
+        sections.append((board["title"], new_items))
         seen |= set(rows)
         seen |= {display_id(row) for row in rows.values()}
+
+    sections = dedupe_sections(sections)
     save_seen(seen)
+    save_version()
 
-    total = len(new_main) + len(new_off)
-    print(f"Parsed: curr_main={len(curr_main)} curr_off={len(curr_off)} "
-          f"seen={len(seen)} seen_file={'yes' if had_seen_file else 'seeded'}")
-    print(f"New: main={len(new_main)} off={len(new_off)} total={total}")
+    total = sum(len(items) for _, items in sections)
+    print(f"seen={len(seen)} reseeding={'yes' if reseeding else 'no'} total_new={total}")
 
-    html_body = render_html(new_main, new_off)
-    plain_body = render_plain(new_main, new_off)
-    subject = build_subject(new_main, new_off)
+    html_body = render_html(sections)
+    plain_body = render_plain(sections)
+    subject = build_subject(sections)
 
     if total:
         Path("alert.md").write_text(
