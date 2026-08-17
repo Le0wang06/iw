@@ -311,6 +311,27 @@ def main():
             f"@Le0wang06\n\n{plain_body}\n",
             encoding="utf-8",
         )
+        Path("new_jobs.json").write_text(
+            json.dumps(
+                {
+                    "kind": "ats",
+                    "subject": subject,
+                    "items": [
+                        {
+                            "company": it["company"],
+                            "role": it["title"],
+                            "location": it["location"],
+                            "url": it["url"],
+                            "source": "ATS",
+                        }
+                        for it in new
+                    ],
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
 
     output_path = os.environ.get("GITHUB_OUTPUT")
     if not output_path:

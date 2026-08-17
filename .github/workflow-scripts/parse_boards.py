@@ -485,6 +485,27 @@ def main():
             f"@Le0wang06\n\n{plain_body}\n",
             encoding="utf-8",
         )
+        jobs = []
+        for title, group in sections:
+            for it in group:
+                jobs.append(
+                    {
+                        "company": it["company"],
+                        "role": it["role"],
+                        "location": it["location"],
+                        "url": it["apply_url"],
+                        "source": title,
+                        "terms": it.get("terms") or "",
+                    }
+                )
+        Path("new_jobs.json").write_text(
+            json.dumps(
+                {"kind": "boards", "subject": subject, "items": jobs},
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
 
     output_path = os.environ.get("GITHUB_OUTPUT")
     if not output_path:

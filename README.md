@@ -17,7 +17,7 @@ It checks **every 5 minutes** (GitHub’s fastest built-in schedule). [cron-job.
 | [aprameyak/2027-tech-jobs](https://github.com/aprameyak/2027-tech-jobs) | Summer + **off-cycle / Winter 2027** community list |
 | 227 company ATS boards | Greenhouse / Lever / Ashby intern and co-op roles |
 
-When something new is found, an HTML email goes to **098leowang@gmail.com**. A GitHub issue is also opened and `@Le0wang06` is mentioned.
+When something new is found, Discord is pinged, an HTML email goes to **098leowang@gmail.com**, and a GitHub issue is opened mentioning `@Le0wang06`.
 
 The first run after adding sources records the current boards without emailing the backlog. After that, only **new** postings are sent.
 
@@ -30,6 +30,8 @@ Mail and Actions are already configured:
 | `MAIL_USERNAME` | `098leowang@gmail.com` |
 | `MAIL_TO` | `098leowang@gmail.com` |
 | `MAIL_PASSWORD` | Gmail app password (stored in GitHub Actions secrets) |
+| `DISCORD_CHANNEL_ID` | Channel the bot should post in |
+| `DISCORD_BOT_TOKEN` | Bot token from the Discord Developer Portal **Bot** tab (not the client secret) |
 
 **Internship Board Watcher** runs every 5 minutes. **ATS Board Watcher** runs every 5 minutes, offset by 2 minutes. Quiet checks do not send mail.
 

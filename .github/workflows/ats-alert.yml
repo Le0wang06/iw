@@ -34,6 +34,15 @@ jobs:
         run: |
           gh issue create --title "$ISSUE_TITLE" --body-file alert.md --label "new-listing"
 
+      - name: Ping Discord if new roles found
+        if: ${{ steps.parse.outputs.total != '0' }}
+        continue-on-error: true
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python3 .github/workflow-scripts/discord_notify.py
+
       - name: Send email if new roles found
         if: ${{ steps.parse.outputs.total != '0' }}
         uses: dawidd6/action-send-mail@v3
