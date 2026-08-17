@@ -321,6 +321,12 @@ def main():
     html_body = render_html(new)
     plain_body = render_plain(new)
 
+    if total:
+        Path("alert.md").write_text(
+            f"@Le0wang06\n\n{plain_body}\n",
+            encoding="utf-8",
+        )
+
     output_path = os.environ.get("GITHUB_OUTPUT")
     if not output_path:
         print("---SUBJECT---")

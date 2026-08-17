@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: ats-watcher
@@ -23,8 +24,16 @@ jobs:
         id: parse
         run: python3 .github/workflow-scripts/ats_watcher.py
 
-      - name: Send email if new roles found
+      - name: Open GitHub issue if new roles found
         if: steps.parse.outputs.total != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_TITLE: ${{ steps.parse.outputs.subject }}
+        run: |
+          gh issue create --title "$ISSUE_TITLE" --body-file alert.md --label "new-listing"
+
+      - name: Send email if new roles found
+        if: steps.parse.outputs.total != '0' && secrets.MAIL_PASSWORD != ''
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
