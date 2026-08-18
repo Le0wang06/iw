@@ -7,13 +7,13 @@
 
 ---
 
-### Browse 435 Internship Roles by Category
+### Browse 437 Internship Roles by Category
 
 💻 **[Software Engineering](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-software-engineering-internship-roles)** (148)
 
 📱 **[Product Management](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-product-management-internship-roles)** (37)
 
-🤖 **[Data Science, AI & Machine Learning](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-data-science-ai--machine-learning-internship-roles)** (145)
+🤖 **[Data Science, AI & Machine Learning](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-data-science-ai--machine-learning-internship-roles)** (147)
 
 📈 **[Quantitative Finance](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README.md#-quantitative-finance-internship-roles)** (83)
 
@@ -201,7 +201,7 @@
 <td>Software Engineer Intern</td>
 <td>London, UK</td>
 <td><div align="center"><a href="https://www.optiver.com/join-us/jobs/8713435002/?gh_jid=8713435002&utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/b723e864-0d78-4dec-835e-0f2da12a40db?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
-<td>1d</td>
+<td>0d</td>
 </tr>
 <tr>
 <td><strong><a href="https://simplify.jobs/c/FAST-Enterprises?utm_source=GHList&utm_medium=company">FAST Enterprises</a></strong></td>
@@ -2121,6 +2121,13 @@
 <td><strong><a href="https://simplify.jobs/c/GE-Vernova?utm_source=GHList&utm_medium=company">GE Vernova</a></strong></td>
 <td>Digital Technology Intern</td>
 <td>Greenville, SC<br>Schenectady, NY<br>Atlanta, GA</td>
+<td><div align="center"><a href="https://gevernova.wd5.myworkdayjobs.com/vernova_externalsite/job/Atlanta/GE-Vernova-Digital-Technology-Internship---Summer-2027_R5049176-3?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/7d3709c5-eca0-4793-8cbd-bb444a1d8975?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>14d</td>
+</tr>
+<tr>
+<td>↳</td>
+<td>Digital Technology Intern</td>
+<td>Greenville, SC<br>Schenectady, NY<br>Atlanta, GA</td>
 <td><div align="center"><a href="https://gevernova.wd5.myworkdayjobs.com/only_confidential_executive_recruiting/job/Atlanta/GE-Vernova-Digital-Technology-Internship---Summer-2027_R5049176-2?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/f6c11914-46a2-4cc1-af73-a4ddaa2fd4be?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
 <td>14d</td>
 </tr>
@@ -2171,6 +2178,13 @@
 <td>Data Internship - Data & AI Program</td>
 <td><details><summary><strong>8 locations</strong></summary>Palo Alto, CA<br>Newark, DE<br>Plano, TX<br>Chicago, IL<br>Jersey City, NJ<br>Columbus, OH<br>NYC<br>Wilmington, DE</details></td>
 <td><div align="center"><a href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210775223?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/1bf46509-1ef7-44c8-9af8-cbe0dbe392ff?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
+<td>15d</td>
+</tr>
+<tr>
+<td>↳</td>
+<td>Data & AI Intern - Analyst</td>
+<td><details><summary><strong>8 locations</strong></summary>Palo Alto, CA<br>Newark, DE<br>Plano, TX<br>Chicago, IL<br>Jersey City, NJ<br>Columbus, OH<br>NYC<br>Wilmington, DE</details></td>
+<td><div align="center"><a href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210773869?utm_source=Simplify&ref=Simplify"><img src="https://i.imgur.com/fbjwDvo.png" width="50" alt="Apply"></a> <a href="https://simplify.jobs/p/98635871-6276-41e4-ad95-172485704a2c?utm_source=GHList"><img src="https://i.imgur.com/aVnQdox.png" width="26" alt="Simplify"></a></div></td>
 <td>15d</td>
 </tr>
 <tr>
@@ -2471,7 +2485,7 @@
 </table>
 
 
-🔒 **[See 40 more closed roles →](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Inactive.md#-data-science-ai--machine-learning-internship-roles-inactive)**
+🔒 **[See 38 more closed roles →](https://github.com/SimplifyJobs/Summer2027-Internships/blob/dev/README-Inactive.md#-data-science-ai--machine-learning-internship-roles-inactive)**
 
 
 
