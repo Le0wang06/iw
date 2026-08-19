@@ -1,6 +1,6 @@
 # iw
 
-GitHub Actions bot that posts new internship / new-grad listings to **Discord**. Email and GitHub issues are optional.
+**InternMonkey** is a Discord bot that notifies you when a new intern or new-grad job listing is posted.
 
 It checks **every 5 minutes** (GitHub’s fastest built-in schedule). [cron-job.org](https://cron-job.org/en/) can ping even faster (boards every 2 minutes) via `repository_dispatch`.
 
