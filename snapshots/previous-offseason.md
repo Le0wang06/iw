@@ -13596,7 +13596,7 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 
 
 <details>
-<summary>🗃️ Inactive roles (1279)</summary>
+<summary>🗃️ Inactive roles (1278)</summary>
 
 <table>
 <thead>
@@ -23841,14 +23841,6 @@ We're back! Use this repo to share and keep track of software, tech, CS, PM, qua
 <td>Fall 2026</td>
 <td>🔒</td>
 <td>7mo</td>
-</tr>
-<tr>
-<td><strong><a href="https://simplify.jobs/c/Leidos?utm_source=GHList&utm_medium=company">Leidos</a></strong></td>
-<td>SRE Metrics Analyst Intern</td>
-<td><details><summary><strong>4 locations</strong></summary>Bremerton, WA<br>Norfolk, VA<br>Jacksonville, FL<br>San Diego, CA</details></td>
-<td>Spring 2026</td>
-<td>🔒</td>
-<td>8mo</td>
 </tr>
 </tbody>
 </table>
