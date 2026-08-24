@@ -45,8 +45,8 @@ jobs:
           gh issue create --title "$ISSUE_TITLE" --body-file alert.md --label "new-listing"
 
       - name: Ping Discord if new rows found
+        id: discord
         if: ${{ steps.parse.outputs.total != '0' }}
-        continue-on-error: true
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
@@ -68,6 +68,7 @@ jobs:
           body: ${{ steps.parse.outputs.plain_body }}
 
       - name: Commit seen-state only
+        if: ${{ steps.parse.outputs.total == '0' || steps.discord.outcome == 'success' }}
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
