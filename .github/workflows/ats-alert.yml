@@ -19,7 +19,7 @@ concurrency:
 jobs:
   check-ats:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       MAIL_TO: ${{ secrets.MAIL_TO }}
       ENABLE_EMAIL: ${{ vars.ENABLE_EMAIL }}

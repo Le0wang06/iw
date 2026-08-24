@@ -16,7 +16,7 @@ Fast path is [cron-job.org](https://cron-job.org/en/) (`repository_dispatch`): *
 | [ambicuity New-Grad-Jobs](https://github.com/ambicuity/New-Grad-Jobs) | Early-career / new-grad / intern titles from company APIs |
 | [SpeedyApply SWE](https://github.com/speedyapply/2027-SWE-College-Jobs) + [AI/ML](https://github.com/speedyapply/2027-AI-College-Jobs) | Daily SWE and AI intern **and USA new-grad** lists |
 | [aprameyak/2027-tech-jobs](https://github.com/aprameyak/2027-tech-jobs) | Summer + **off-cycle / Winter 2027** community list |
-| ~240 company ATS boards | Greenhouse / Lever / Ashby intern, co-op, **and new-grad** roles |
+| ~240 company ATS boards | Greenhouse / Lever / Ashby / Workday / Netflix careers / Uber, plus HRT and Two Sigma |
 
 When something new is found, Discord is pinged. Cards include term, track (SWE / AI / Quant / …), and priority companies first. Email and GitHub issues stay off unless you opt in.
 
@@ -61,7 +61,7 @@ ATS companies live in `.github/workflow-scripts/ats_companies.json`:
 }
 ```
 
-`ats` must be `greenhouse`, `lever`, or `ashby`.
+`ats` must be `greenhouse`, `lever`, `ashby`, `workday`, `phenom`, `oracle`, or `html`. Workday needs `host`, `tenant`, and `site` from the public careers URL. Citadel’s careers site does not expose a public job feed we can poll.
 
 ## Layout
 

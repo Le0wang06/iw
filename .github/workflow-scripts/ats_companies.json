@@ -481,6 +481,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "hrttalentcommunity",
+  "name": "Hudson River Trading"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "huntress",
   "name": "Huntress"
  },
@@ -685,6 +690,19 @@
   "name": "Neo4j"
  },
  {
+  "ats": "phenom",
+  "slug": "netflix",
+  "name": "Netflix",
+  "api": "https://explore.jobs.netflix.net/api/apply/v2/jobs",
+  "domain": "netflix.com",
+  "job_url": "https://explore.jobs.netflix.net/careers/job/",
+  "query": [
+   "intern",
+   "new grad",
+   "university"
+  ]
+ },
+ {
   "ats": "greenhouse",
   "slug": "netlify",
   "name": "Netlify"
@@ -718,6 +736,18 @@
   "ats": "greenhouse",
   "slug": "nuro",
   "name": "Nuro"
+ },
+ {
+  "ats": "workday",
+  "slug": "nvidia",
+  "name": "NVIDIA",
+  "host": "nvidia.wd5.myworkdayjobs.com",
+  "tenant": "nvidia",
+  "site": "NVIDIAExternalCareerSite",
+  "search": [
+   "Internship",
+   "new college graduate"
+  ]
  },
  {
   "ats": "greenhouse",
@@ -1073,6 +1103,27 @@
   "ats": "greenhouse",
   "slug": "twitch",
   "name": "Twitch"
+ },
+ {
+  "ats": "html",
+  "slug": "twosigma",
+  "name": "Two Sigma",
+  "urls": [
+   "https://careers.twosigma.com/careers/OpenRoles",
+   "https://careers.twosigma.com/careers/InternshipsAndEarlyCareers"
+  ]
+ },
+ {
+  "ats": "oracle",
+  "slug": "UberCareers",
+  "name": "Uber",
+  "host": "iaziqy.fa.ocs.oraclecloud.com",
+  "site": "CX",
+  "keywords": [
+   "internship",
+   "new graduate"
+  ],
+  "apply": "https://iaziqy.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/UberCareers/job"
  },
  {
   "ats": "greenhouse",

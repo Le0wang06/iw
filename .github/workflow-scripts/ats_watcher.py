@@ -27,7 +27,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 COMPANIES_PATH = SCRIPT_DIR / "ats_companies.json"
 SEEN_PATH = Path("snapshots/ats-seen.json")
 VERSION_PATH = Path("snapshots/ats-watch-version.json")
-WATCH_VERSION = 3
+WATCH_VERSION = 4
 
 # Keep out non-tech recruiting noise. Everything else intern-shaped is kept:
 # SWE, frontend, mobile, data, PM, hardware, ML, security, quant, etc.
@@ -105,11 +105,22 @@ def is_us(location: str) -> bool:
     return True
 
 
-def fetch_json(url: str):
+def fetch_json(url: str, data=None):
     last_err = None
     for _ in range(2):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            headers = {
+                "User-Agent": "Mozilla/5.0 InternMonkey/1.0",
+                "Accept": "application/json",
+            }
+            body = None
+            method = "GET"
+            if data is not None:
+                headers["Content-Type"] = "application/json"
+                headers["Accept-Language"] = "en-US"
+                body = json.dumps(data).encode("utf-8")
+                method = "POST"
+            req = urllib.request.Request(url, data=body, headers=headers, method=method)
             with urllib.request.urlopen(req, timeout=25) as resp:
                 return json.loads(resp.read().decode("utf-8"))
         except Exception as e:  # noqa: BLE001 - retry once, then report
@@ -117,9 +128,211 @@ def fetch_json(url: str):
     raise last_err
 
 
+def workday_jobs(company: dict) -> list:
+    host = company["host"]
+    tenant = company["tenant"]
+    site = company["site"]
+    url = f"https://{host}/wday/cxs/{tenant}/{site}/jobs"
+    searches = company.get("search") or ["Internship", "new college graduate"]
+    out, seen_ids = [], set()
+    for search in searches:
+        offset = 0
+        for _ in range(12):
+            data = fetch_json(
+                url,
+                {
+                    "appliedFacets": {},
+                    "limit": 20,
+                    "offset": offset,
+                    "searchText": search,
+                },
+            )
+            postings = data.get("jobPostings") or []
+            if not postings:
+                break
+            for job in postings:
+                path = job.get("externalPath") or ""
+                jid = path or job.get("title") or ""
+                if not jid or jid in seen_ids:
+                    continue
+                seen_ids.add(jid)
+                out.append(
+                    {
+                        "id": f"w:{tenant}:{jid}",
+                        "title": job.get("title") or "",
+                        "location": job.get("locationsText") or "",
+                        "url": f"https://{host}/en-US/{site}{path}",
+                    }
+                )
+            offset += 20
+            if offset >= int(data.get("total") or 0):
+                break
+    return out
+
+
+def phenom_jobs(company: dict) -> list:
+    api = company["api"]
+    domain = company.get("domain") or company["slug"]
+    job_url = company.get("job_url") or f"https://explore.jobs.{domain}/careers/job/"
+    queries = company.get("query") or ["intern", "new grad"]
+    out, seen_ids = [], set()
+    for query in queries:
+        start = 0
+        for _ in range(8):
+            url = (
+                api
+                + "?domain="
+                + urllib.parse.quote(domain)
+                + "&start="
+                + str(start)
+                + "&num=50&query="
+                + urllib.parse.quote(query)
+            )
+            data = fetch_json(url)
+            positions = data.get("positions") or []
+            if not positions:
+                break
+            for job in positions:
+                jid = str(job.get("id") or job.get("ats_job_id") or "")
+                if not jid or jid in seen_ids:
+                    continue
+                seen_ids.add(jid)
+                locs = job.get("locations") or []
+                location = " / ".join(str(x) for x in locs if x) or (
+                    job.get("location") or ""
+                )
+                out.append(
+                    {
+                        "id": f"p:{company['slug']}:{jid}",
+                        "title": job.get("name") or job.get("posting_name") or "",
+                        "location": location,
+                        "url": job_url.rstrip("/") + "/" + jid,
+                    }
+                )
+            start += 50
+            count = int(data.get("count") or 0)
+            if start >= count:
+                break
+    return out
+
+
+def oracle_jobs(company: dict) -> list:
+    host = company["host"]
+    site = company.get("site") or "CX"
+    keywords = company.get("keywords") or ["internship", "new graduate"]
+    apply = company.get("apply") or (
+        f"https://{host}/hcmUI/CandidateExperience/en/sites/"
+        f"{company.get('slug', 'careers')}/job/"
+    )
+    out, seen_ids = [], set()
+    for keyword in keywords:
+        offset = 0
+        for _ in range(12):
+            finder = (
+                "findReqs;keyword="
+                + urllib.parse.quote(keyword, safe="")
+                + f",siteNumber={site},limit=25,offset={offset}"
+            )
+            url = (
+                f"https://{host}/hcmRestApi/resources/latest/"
+                "recruitingCEJobRequisitions?onlyData=true"
+                "&expand=requisitionList.workLocation&finder="
+                + finder
+            )
+            data = fetch_json(url)
+            item = (data.get("items") or [{}])[0]
+            jobs = item.get("requisitionList") or []
+            if not jobs:
+                break
+            for job in jobs:
+                jid = str(job.get("Id") or "")
+                if not jid or jid in seen_ids:
+                    continue
+                country = str(job.get("PrimaryLocationCountry") or "").upper()
+                if country and country not in {"US", "USA"}:
+                    continue
+                seen_ids.add(jid)
+                work = job.get("workLocation") or []
+                if isinstance(work, dict):
+                    work = [work]
+                loc_names = [
+                    w.get("Name") or w.get("PrimaryLocation") or ""
+                    for w in work
+                    if isinstance(w, dict)
+                ]
+                location = " / ".join(x for x in loc_names if x) or str(
+                    job.get("PrimaryLocationCountry") or ""
+                )
+                out.append(
+                    {
+                        "id": f"o:{company['slug']}:{jid}",
+                        "title": job.get("Title") or "",
+                        "location": location,
+                        "url": apply.rstrip("/") + "/" + jid,
+                    }
+                )
+            offset += 25
+            if offset >= int(item.get("TotalJobsCount") or 0):
+                break
+    return out
+
+
+TWOSIGMA_JOB_RE = re.compile(
+    r'href="(?:https://careers\.twosigma\.com)?(/careers/JobDetail/([^"/]+)/(\d+))"',
+    re.I,
+)
+
+
+def _twosigma_title_loc(slug: str) -> tuple:
+    for marker, loc_end in (
+        ("United-States-", "United States"),
+        ("United-Kingdom-of-Great-Britain-and-Northern-Ireland-", "United Kingdom"),
+        ("United-Kingdom-", "United Kingdom"),
+    ):
+        idx = slug.find(marker)
+        if idx >= 0:
+            loc = slug[:idx].replace("-", " ").strip() + ", " + loc_end
+            title = slug[idx + len(marker) :].replace("-", " ").strip()
+            return title, loc
+    return slug.replace("-", " "), ""
+
+
+def html_jobs(company: dict) -> list:
+    out, seen_ids = [], set()
+    for page_url in company.get("urls") or []:
+        req = urllib.request.Request(
+            page_url,
+            headers={"User-Agent": "Mozilla/5.0 InternMonkey/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=25) as resp:
+            html_text = resp.read().decode("utf-8", "replace")
+        for path, slug, jid in TWOSIGMA_JOB_RE.findall(html_text):
+            if jid in seen_ids:
+                continue
+            seen_ids.add(jid)
+            title, location = _twosigma_title_loc(slug)
+            out.append(
+                {
+                    "id": f"h:{company['slug']}:{jid}",
+                    "title": title,
+                    "location": location,
+                    "url": "https://careers.twosigma.com" + path,
+                }
+            )
+    return out
+
+
 def board_jobs(company: dict) -> list:
     """Return [{id, title, location, url}] for one company's board."""
     ats, slug = company["ats"], company["slug"]
+    if ats == "workday":
+        return workday_jobs(company)
+    if ats == "phenom":
+        return phenom_jobs(company)
+    if ats == "oracle":
+        return oracle_jobs(company)
+    if ats == "html":
+        return html_jobs(company)
     if ats == "greenhouse":
         data = fetch_json(f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs")
         return [

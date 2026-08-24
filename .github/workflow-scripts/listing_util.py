@@ -77,10 +77,10 @@ PRIORITY_COMPANIES = {
 }
 
 EARLY_ROLE_RE = re.compile(
-    r"intern|co[- ]?op|new[- ]?grad|university grad|early career|"
+    r"\bintern(?:ship)?s?\b|\bco[- ]?op\b|new[- ]?grad|university grad|early career|"
     r"entry[- ]level|graduate (software|engineer)|engineer i\b|"
     r"software engineer 1\b|associate software|junior software|"
-    r"new graduate",
+    r"new graduate|new college graduate",
     re.I,
 )
 
