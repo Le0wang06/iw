@@ -10,6 +10,7 @@ from listing_util import (
     display_key as listing_display_key,
     infer_track,
     is_priority,
+    peer_display_ids,
 )
 
 TR_RE = re.compile(r"<tr>(.*?)</tr>", re.DOTALL)
@@ -384,8 +385,11 @@ def main():
         parsed_boards.append((board, rows))
         print(f"Parsed {board['key']}: {len(rows)}", file=sys.stderr)
 
+    peer = peer_display_ids("boards")
+
     def is_new(rid, row):
-        return rid not in seen and display_id(row) not in seen
+        did = display_id(row)
+        return rid not in seen and did not in seen and did not in peer
 
     sections = []
     for board, rows in parsed_boards:

@@ -20,6 +20,7 @@ from listing_util import (
     display_key as listing_display_key,
     infer_track,
     is_priority,
+    peer_display_ids,
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -280,11 +281,12 @@ def main():
         except (ValueError, OSError):
             first_run = True
     reseeding = first_run or load_ats_version() < WATCH_VERSION
+    peer = peer_display_ids("ats")
 
     new, shown = [], set()
     for it in matches:
         did = display_id(it["company"], it)
-        if it["id"] in seen or did in seen:
+        if it["id"] in seen or did in seen or did in peer:
             continue
         dkey = did
         if dkey in shown:

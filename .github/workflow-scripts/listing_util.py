@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import json
 import re
+from pathlib import Path
 
 WHITESPACE_RE = re.compile(r"\s+")
 PUNCT_RE = re.compile(r"[^a-z0-9]+")
@@ -141,3 +143,25 @@ def is_priority(company: str) -> bool:
 
 def display_key(company: str, role: str, location: str) -> str:
     return "|".join((norm_company(company), norm_role(role), norm_location(location)))
+
+
+SEEN_BOARDS_PATH = Path("snapshots/seen.json")
+SEEN_ATS_PATH = Path("snapshots/ats-seen.json")
+
+
+def load_id_set(path: Path) -> set[str]:
+    if not path.exists():
+        return set()
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (ValueError, OSError, TypeError):
+        return set()
+    if isinstance(data, list):
+        return {str(item) for item in data}
+    return set()
+
+
+def peer_display_ids(kind: str) -> set[str]:
+    """Display keys already alerted by the other watcher."""
+    path = SEEN_ATS_PATH if kind == "boards" else SEEN_BOARDS_PATH
+    return {item for item in load_id_set(path) if item.startswith("d:")}
