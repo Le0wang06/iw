@@ -1,8 +1,9 @@
 name: ATS Board Watcher
 
 on:
+  # Hourly backup, offset from the board watcher. cron-job.org is the fast path (every 5 min).
   schedule:
-    - cron: '2-59/5 * * * *'   # every 5 min, offset from the board watcher
+    - cron: '37 * * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [iw-cron-ats]
@@ -18,6 +19,7 @@ concurrency:
 jobs:
   check-ats:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       MAIL_TO: ${{ secrets.MAIL_TO }}
       ENABLE_EMAIL: ${{ vars.ENABLE_EMAIL }}

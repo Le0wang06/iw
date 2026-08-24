@@ -1,0 +1,145 @@
+{
+  "boards": [
+    {
+      "key": "summer",
+      "file": "current-summer.md",
+      "title": "Summer 2027 · Simplify",
+      "parser": "simplify",
+      "urls": [
+        "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md"
+      ]
+    },
+    {
+      "key": "offseason",
+      "file": "current-offseason.md",
+      "title": "Off-Season / Winter 2027 · Simplify",
+      "parser": "simplify",
+      "urls": [
+        "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
+      ]
+    },
+    {
+      "key": "newgrad",
+      "file": "current-newgrad.md",
+      "title": "New Grad · Simplify",
+      "parser": "simplify",
+      "urls": [
+        "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md",
+        "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/main/README.md"
+      ]
+    },
+    {
+      "key": "vansh",
+      "file": "current-vansh.md",
+      "title": "Summer 2027 · Vansh & Ouckah",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/README.md"
+      ]
+    },
+    {
+      "key": "vansh_off",
+      "file": "current-vansh-off.md",
+      "title": "Off-Season / Winter 2027 · Vansh & Ouckah",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
+      ]
+    },
+    {
+      "key": "vansh_ng",
+      "file": "current-vansh-ng.md",
+      "title": "New Grad 2027 · Vansh",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/README.md"
+      ]
+    },
+    {
+      "key": "cvrve_ng",
+      "file": "current-cvrve-ng.md",
+      "title": "New Grad · cvrve",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md",
+        "https://raw.githubusercontent.com/cvrve/New-Grad/main/README.md"
+      ]
+    },
+    {
+      "key": "applyguy",
+      "file": "current-applyguy.json",
+      "title": "ApplyGuy 2027 (all seasons)",
+      "parser": "jobsjson",
+      "empty": "{\"jobs\":[]}",
+      "urls": [
+        "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
+      ]
+    },
+    {
+      "key": "zshah",
+      "file": "current-zshah.json",
+      "title": "Workday + extra ATS · zshah101",
+      "parser": "jobsjson",
+      "empty": "{\"jobs\":[]}",
+      "urls": [
+        "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
+      ]
+    },
+    {
+      "key": "ambicuity",
+      "file": "current-ambicuity.json",
+      "title": "New Grad / early career · ambicuity",
+      "parser": "jobsjson",
+      "early_only": true,
+      "empty": "{\"jobs\":[]}",
+      "urls": [
+        "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
+      ]
+    },
+    {
+      "key": "speedy_swe",
+      "file": "current-speedy-swe.md",
+      "title": "SpeedyApply SWE internships",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/README.md"
+      ]
+    },
+    {
+      "key": "speedy_swe_ng",
+      "file": "current-speedy-swe-ng.md",
+      "title": "SpeedyApply SWE new grad",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_USA.md"
+      ]
+    },
+    {
+      "key": "speedy_ai",
+      "file": "current-speedy-ai.md",
+      "title": "SpeedyApply AI/ML internships",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/README.md"
+      ]
+    },
+    {
+      "key": "speedy_ai_ng",
+      "file": "current-speedy-ai-ng.md",
+      "title": "SpeedyApply AI/ML new grad",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/NEW_GRAD_USA.md"
+      ]
+    },
+    {
+      "key": "aprameyak",
+      "file": "current-aprameyak.md",
+      "title": "2027 Tech Jobs (incl. Winter off-cycle)",
+      "parser": "markdown",
+      "urls": [
+        "https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md"
+      ]
+    }
+  ]
+}

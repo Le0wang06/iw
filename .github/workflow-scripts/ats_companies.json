@@ -56,6 +56,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "akunacapital",
+  "name": "Akuna Capital"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "alloy",
   "name": "Alloy"
  },
@@ -401,6 +406,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "fiveringsllc",
+  "name": "Five Rings"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "fivetran",
   "name": "Fivetran"
  },
@@ -408,6 +418,11 @@
   "ats": "greenhouse",
   "slug": "flexport",
   "name": "Flexport"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "flowtraders",
+  "name": "Flow Traders"
  },
  {
   "ats": "greenhouse",
@@ -481,6 +496,11 @@
  },
  {
   "ats": "greenhouse",
+  "slug": "imc",
+  "name": "IMC"
+ },
+ {
+  "ats": "greenhouse",
   "slug": "imply",
   "name": "Imply"
  },
@@ -498,6 +518,16 @@
   "ats": "greenhouse",
   "slug": "intercom",
   "name": "Intercom"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "janestreet",
+  "name": "Jane Street"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "jumptrading",
+  "name": "Jump Trading"
  },
  {
   "ats": "lever",
@@ -700,9 +730,19 @@
   "name": "Okta"
  },
  {
+  "ats": "greenhouse",
+  "slug": "oldmissioncapital",
+  "name": "Old Mission"
+ },
+ {
   "ats": "ashby",
   "slug": "openai",
   "name": "OpenAI"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "optiverus",
+  "name": "Optiver"
  },
  {
   "ats": "greenhouse",
@@ -753,6 +793,11 @@
   "ats": "lever",
   "slug": "plus-2",
   "name": "PlusAI"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "point72",
+  "name": "Point72"
  },
  {
   "ats": "ashby",
@@ -1053,6 +1098,11 @@
   "ats": "greenhouse",
   "slug": "verkada",
   "name": "Verkada"
+ },
+ {
+  "ats": "greenhouse",
+  "slug": "virtu",
+  "name": "Virtu Financial"
  },
  {
   "ats": "ashby",

@@ -5,6 +5,13 @@ import re
 import sys
 from pathlib import Path
 
+from listing_util import (
+    EARLY_ROLE_RE,
+    display_key as listing_display_key,
+    infer_track,
+    is_priority,
+)
+
 TR_RE = re.compile(r"<tr>(.*?)</tr>", re.DOTALL)
 TD_RE = re.compile(r"<td[^>]*>(.*?)</td>", re.DOTALL)
 ANCHOR_RE = re.compile(r'<a\s+href="([^"]+)"[^>]*>(.*?)</a>', re.DOTALL | re.IGNORECASE)
@@ -19,91 +26,11 @@ WHITESPACE_RE = re.compile(r"\s+")
 
 SEEN_PATH = "snapshots/seen.json"
 VERSION_PATH = "snapshots/watch-version.json"
-WATCH_VERSION = 3
-
-EARLY_ROLE_RE = re.compile(
-    r"intern|co[- ]?op|new[- ]?grad|university grad|early career|"
-    r"entry[- ]level|graduate (software|engineer)|engineer i\b|"
-    r"software engineer 1\b|associate software",
-    re.I,
-)
+WATCH_VERSION = 4
 BARE_URL_RE = re.compile(r"https?://[^\s)<>\"']+")
-
-BOARDS = [
-    {
-        "key": "summer",
-        "file": "current-summer.md",
-        "title": "Summer 2027 · Simplify",
-        "parser": "simplify",
-    },
-    {
-        "key": "offseason",
-        "file": "current-offseason.md",
-        "title": "Off-Season / Winter 2027 · Simplify",
-        "parser": "simplify",
-    },
-    {
-        "key": "newgrad",
-        "file": "current-newgrad.md",
-        "title": "New Grad · Simplify",
-        "parser": "simplify",
-    },
-    {
-        "key": "vansh",
-        "file": "current-vansh.md",
-        "title": "Summer 2027 · Vansh & Ouckah",
-        "parser": "markdown",
-    },
-    {
-        "key": "vansh_off",
-        "file": "current-vansh-off.md",
-        "title": "Off-Season / Winter 2027 · Vansh & Ouckah",
-        "parser": "markdown",
-    },
-    {
-        "key": "vansh_ng",
-        "file": "current-vansh-ng.md",
-        "title": "New Grad 2027 · Vansh",
-        "parser": "markdown",
-    },
-    {
-        "key": "applyguy",
-        "file": "current-applyguy.json",
-        "title": "ApplyGuy 2027 (all seasons)",
-        "parser": "jobsjson",
-    },
-    {
-        "key": "zshah",
-        "file": "current-zshah.json",
-        "title": "Workday + extra ATS · zshah101",
-        "parser": "jobsjson",
-    },
-    {
-        "key": "ambicuity",
-        "file": "current-ambicuity.json",
-        "title": "New Grad / early career · ambicuity",
-        "parser": "jobsjson",
-        "early_only": True,
-    },
-    {
-        "key": "speedy_swe",
-        "file": "current-speedy-swe.md",
-        "title": "SpeedyApply SWE internships",
-        "parser": "markdown",
-    },
-    {
-        "key": "speedy_ai",
-        "file": "current-speedy-ai.md",
-        "title": "SpeedyApply AI/ML internships",
-        "parser": "markdown",
-    },
-    {
-        "key": "aprameyak",
-        "file": "current-aprameyak.md",
-        "title": "2027 Tech Jobs (incl. Winter off-cycle)",
-        "parser": "markdown",
-    },
-]
+BOARDS = json.loads(
+    Path(__file__).with_name("sources.json").read_text(encoding="utf-8")
+)["boards"]
 
 
 def strip_html(fragment: str) -> str:
@@ -243,8 +170,13 @@ def parse_jobs_json(path: str, early_only: bool = False) -> dict:
             continue
         company = str(job.get("company") or "").strip()
         role = str(job.get("title") or job.get("role") or "").strip()
-        location = str(job.get("location") or "").strip()
-        apply_url = str(job.get("listingUrl") or job.get("url") or "").strip()
+        location = job.get("location") or ""
+        if isinstance(location, list):
+            location = " / ".join(str(x) for x in location if x)
+        location = str(location).strip()
+        apply_url = str(
+            job.get("listingUrl") or job.get("url") or job.get("apply_url") or ""
+        ).strip()
         if not company or not role or not apply_url:
             continue
         if early_only and not EARLY_ROLE_RE.search(role):
@@ -318,17 +250,12 @@ def save_seen(seen: set) -> None:
     )
 
 
-def display_key(it: dict) -> tuple:
-    role = it["role"].replace("🎓", "").replace("🛂", "").replace("🇺🇸", "")
-    return (
-        it["company"].strip().lower(),
-        WHITESPACE_RE.sub(" ", role).strip().lower(),
-        it["location"].strip().lower(),
-    )
+def display_key(it: dict) -> str:
+    return listing_display_key(it["company"], it["role"], it["location"])
 
 
 def display_id(it: dict) -> str:
-    return "d:" + "|".join(display_key(it))
+    return "d:" + display_key(it)
 
 
 def dedupe_sections(sections: list) -> list:
@@ -496,8 +423,17 @@ def main():
                         "url": it["apply_url"],
                         "source": title,
                         "terms": it.get("terms") or "",
+                        "track": infer_track(it["role"], it.get("terms") or ""),
                     }
                 )
+        jobs.sort(
+            key=lambda it: (
+                0 if is_priority(it["company"]) else 1,
+                it["source"],
+                it["company"].lower(),
+                it["role"].lower(),
+            )
+        )
         Path("new_jobs.json").write_text(
             json.dumps(
                 {"kind": "boards", "subject": subject, "items": jobs},

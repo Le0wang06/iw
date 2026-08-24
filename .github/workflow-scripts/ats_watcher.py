@@ -1,5 +1,5 @@
 """Poll company ATS boards (Greenhouse / Lever / Ashby) for new US
-intern / co-op roles and emit an email via GITHUB_OUTPUT.
+intern, co-op, and new-grad roles.
 
 Postings hit the ATS before LinkedIn or the SimplifyJobs boards pick them
 up, so this is the fastest signal. Companies live in ats_companies.json.
@@ -15,13 +15,18 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
+from listing_util import (
+    EARLY_ROLE_RE,
+    display_key as listing_display_key,
+    infer_track,
+    is_priority,
+)
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 COMPANIES_PATH = SCRIPT_DIR / "ats_companies.json"
 SEEN_PATH = Path("snapshots/ats-seen.json")
 VERSION_PATH = Path("snapshots/ats-watch-version.json")
-WATCH_VERSION = 2
-
-INTERN_RE = re.compile(r"\bintern(ship)?\b|\bco[- ]?op\b", re.I)
+WATCH_VERSION = 3
 
 # Keep out non-tech recruiting noise. Everything else intern-shaped is kept:
 # SWE, frontend, mobile, data, PM, hardware, ML, security, quant, etc.
@@ -80,7 +85,7 @@ WHITESPACE_RE = re.compile(r"\s+")
 
 
 def wanted_title(title: str) -> bool:
-    if not INTERN_RE.search(title):
+    if not EARLY_ROLE_RE.search(title):
         return False
     if EXCLUDE_RE.search(title):
         return False
@@ -159,8 +164,7 @@ def board_jobs(company: dict) -> list:
 
 
 def display_id(company_name: str, it: dict) -> str:
-    key = f"{company_name}|{it['title']}|{it['location']}".lower()
-    return "d:" + WHITESPACE_RE.sub(" ", key).strip()
+    return "d:" + listing_display_key(company_name, it["title"], it.get("location") or "")
 
 
 def collect_matches() -> tuple:
@@ -182,7 +186,13 @@ def collect_matches() -> tuple:
                 if wanted_title(j["title"]) and is_us(j["location"]):
                     j["company"] = c["name"]
                     matches.append(j)
-    matches.sort(key=lambda j: (j["company"].lower(), j["title"].lower()))
+    matches.sort(
+        key=lambda j: (
+            0 if is_priority(j["company"]) else 1,
+            j["company"].lower(),
+            j["title"].lower(),
+        )
+    )
     return matches, failed
 
 
@@ -214,10 +224,10 @@ def render_html(items: list) -> str:
         '<div style="max-width:640px;margin:0 auto;background:#fff;padding:24px;'
         'border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.08);">'
         f'<h1 style="font-size:18px;margin:0 0 4px;color:#111;">'
-        f'{len(items)} new intern role{"s" if len(items) != 1 else ""}</h1>'
+        f'{len(items)} new intern / new-grad role{"s" if len(items) != 1 else ""}</h1>'
         '<p style="font-size:12px;color:#888;margin:0 0 8px;">'
         'Straight from company ATS boards (Greenhouse / Lever / Ashby) — '
-        'intern / co-op roles, all functions.</p>'
+        'intern, co-op, and new-grad roles.</p>'
         '<table cellpadding="0" cellspacing="0" border="0" '
         'style="width:100%;border-collapse:collapse;">'
         + "\n".join(rows) +
@@ -232,7 +242,7 @@ def render_html(items: list) -> str:
 
 
 def render_plain(items: list) -> str:
-    lines = [f"{len(items)} new intern role(s)", ""]
+    lines = [f"{len(items)} new intern / new-grad role(s)", ""]
     for it in items:
         lines.append(f"  {it['company']} - {it['title']}")
         lines.append(f"    Location: {it['location'] or '(not listed)'}")
@@ -242,12 +252,12 @@ def render_plain(items: list) -> str:
 
 def build_subject(items: list) -> str:
     if not items:
-        return "No new ATS intern roles"
+        return "No new ATS intern / new-grad roles"
     unique = list(dict.fromkeys(it["company"] for it in items))
     preview = ", ".join(unique[:3])
     suffix = f" +{len(unique) - 3} more" if len(unique) > 3 else ""
     plural = "s" if len(items) != 1 else ""
-    return f"{len(items)} new intern role{plural} (ATS): {preview}{suffix}"
+    return f"{len(items)} new intern / new-grad role{plural} (ATS): {preview}{suffix}"
 
 
 def load_ats_version() -> int:
@@ -322,7 +332,9 @@ def main():
                             "role": it["title"],
                             "location": it["location"],
                             "url": it["url"],
-                            "source": "ATS",
+                            "source": f"{it['company']} ATS",
+                            "terms": "",
+                            "track": infer_track(it["title"]),
                         }
                         for it in new
                     ],

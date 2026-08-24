@@ -21,7 +21,8 @@ CRON_API = "https://api.cron-job.org"
 REPO = "Le0wang06/iw"
 DISPATCH_URL = f"https://api.github.com/repos/{REPO}/dispatches"
 
-# Every 2 minutes — faster than GitHub's 5-minute schedule floor.
+# Fast path: cron-job.org pings GitHub every 2 / 5 minutes.
+# GitHub's own schedule is an hourly backup if those pings stop.
 EVERY_TWO_MINUTES = list(range(0, 60, 2))
 EVERY_FIVE_OFFSET = list(range(1, 60, 5))
 

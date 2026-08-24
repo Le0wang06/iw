@@ -1,8 +1,9 @@
 name: Internship Board Watcher
 
 on:
+  # Hourly backup. cron-job.org is the fast path (every 2 min via repository_dispatch).
   schedule:
-    - cron: '*/5 * * * *'   # every 5 minutes (GitHub's fastest schedule)
+    - cron: '7 * * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [iw-cron-boards]
@@ -11,6 +12,7 @@ permissions:
   contents: write
   issues: write
 
+# One run at a time. Extra pings wait; older pending runs are dropped.
 concurrency:
   group: internship-watcher
   cancel-in-progress: false
@@ -18,6 +20,7 @@ concurrency:
 jobs:
   check-boards:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     env:
       MAIL_TO: ${{ secrets.MAIL_TO }}
       ENABLE_EMAIL: ${{ vars.ENABLE_EMAIL }}
@@ -27,32 +30,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Fetch latest versions of every board
-        run: |
-          mkdir -p snapshots
-          curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md -o current-summer.md
-          curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md -o current-offseason.md
-          curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md -o current-newgrad.md \
-            || curl -fsSL https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/main/README.md -o current-newgrad.md \
-            || echo "" > current-newgrad.md
-          curl -fsSL https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/README.md -o current-vansh.md \
-            || echo "" > current-vansh.md
-          curl -fsSL https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md -o current-vansh-off.md \
-            || echo "" > current-vansh-off.md
-          curl -fsSL https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json -o current-applyguy.json \
-            || echo '{"jobs":[]}' > current-applyguy.json
-          curl -fsSL https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/README.md -o current-vansh-ng.md \
-            || curl -fsSL https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md -o current-vansh-ng.md \
-            || echo "" > current-vansh-ng.md
-          curl -fsSL https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json -o current-zshah.json \
-            || echo '{"jobs":[]}' > current-zshah.json
-          curl -fsSL https://ambicuity.github.io/New-Grad-Jobs/jobs.json -o current-ambicuity.json \
-            || echo '{"jobs":[]}' > current-ambicuity.json
-          curl -fsSL https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/README.md -o current-speedy-swe.md \
-            || echo "" > current-speedy-swe.md
-          curl -fsSL https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/README.md -o current-speedy-ai.md \
-            || echo "" > current-speedy-ai.md
-          curl -fsSL https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md -o current-aprameyak.md \
-            || echo "" > current-aprameyak.md
+        run: python3 .github/workflow-scripts/fetch_boards.py
 
       - name: Parse boards and build email
         id: parse
@@ -89,27 +67,11 @@ jobs:
           html_body: ${{ steps.parse.outputs.html_body }}
           body: ${{ steps.parse.outputs.plain_body }}
 
-      - name: Save new snapshots for next run
-        run: |
-          cp current-summer.md snapshots/previous-summer.md
-          cp current-offseason.md snapshots/previous-offseason.md
-          cp current-newgrad.md snapshots/previous-newgrad.md
-          cp current-vansh.md snapshots/previous-vansh.md
-          cp current-vansh-off.md snapshots/previous-vansh-off.md
-          cp current-applyguy.json snapshots/previous-applyguy.json
-          cp current-vansh-ng.md snapshots/previous-vansh-ng.md
-          cp current-zshah.json snapshots/previous-zshah.json
-          cp current-ambicuity.json snapshots/previous-ambicuity.json
-          cp current-speedy-swe.md snapshots/previous-speedy-swe.md
-          cp current-speedy-ai.md snapshots/previous-speedy-ai.md
-          cp current-aprameyak.md snapshots/previous-aprameyak.md
-          cp current-summer.md snapshots/previous-main.md
-
-      - name: Commit updated snapshots
+      - name: Commit seen-state only
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add snapshots/
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update board snapshots"
+          git add snapshots/seen.json snapshots/watch-version.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update board seen state"
           git pull --rebase origin main
           git push

@@ -8,25 +8,17 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import sys
 import urllib.error
 import urllib.request
+from collections import Counter
 from pathlib import Path
+
+from listing_util import infer_term, infer_track, is_priority, role_type
 
 JOBS_PATH = Path("new_jobs.json")
 API = "https://discord.com/api/v10"
 USER_AGENT = "InternMonkey (https://github.com/Le0wang06/iw, 1.0)"
-
-TERM_RULES = [
-    (re.compile(r"winter\s*2027|off[- ]season|off[- ]cycle", re.I), "Winter 2027"),
-    (re.compile(r"fall\s*2026", re.I), "Fall 2026"),
-    (re.compile(r"spring\s*2027", re.I), "Spring 2027"),
-    (re.compile(r"summer\s*2027|\bsummer\b", re.I), "Summer 2027"),
-    (re.compile(r"new[- ]?grad|university grad|early career", re.I), "New Grad"),
-    (re.compile(r"co[- ]?op", re.I), "Co-op"),
-    (re.compile(r"intern", re.I), "Internship"),
-]
 
 TERM_COLORS = {
     "Winter 2027": 0x22D3EE,
@@ -51,25 +43,18 @@ def load_jobs() -> dict | None:
     return data
 
 
-def infer_term(it: dict, kind: str) -> str:
-    text = " ".join(
-        str(it.get(k) or "") for k in ("terms", "source", "role", "company")
+def job_term(it: dict, kind: str) -> str:
+    return infer_term(
+        it.get("terms") or "",
+        it.get("source") or "",
+        it.get("role") or "",
+        it.get("company") or "",
+        kind=kind,
     )
-    for rx, label in TERM_RULES:
-        if rx.search(text):
-            return label
-    if kind == "ats":
-        return "Internship"
-    return "Internship / New Grad"
 
 
-def role_type(it: dict, term: str) -> str:
-    role = it.get("role") or ""
-    if re.search(r"new[- ]?grad|university grad|early career", role, re.I) or term == "New Grad":
-        return "New Grad (full-time)"
-    if re.search(r"co[- ]?op", role, re.I) or term == "Co-op":
-        return "Co-op"
-    return "Internship"
+def job_track(it: dict) -> str:
+    return it.get("track") or infer_track(it.get("role") or "", it.get("terms") or "")
 
 
 def job_embed(it: dict, kind: str) -> dict:
@@ -80,15 +65,15 @@ def job_embed(it: dict, kind: str) -> dict:
         "Company ATS" if kind == "ats" else "Internship board"
     )
     url = (it.get("url") or "").strip()
-    term = infer_term(it, kind)
-    rtype = role_type(it, term)
+    term = job_term(it, kind)
+    track = job_track(it)
+    rtype = role_type(role, term)
     apply_line = f"\n[Apply]({url})" if url.startswith("http") else ""
-
     embed = {
         "author": {"name": company[:256]},
         "title": role[:256],
         "description": (
-            f"**{rtype}**\n"
+            f"**{rtype}** · {track}\n"
             f"**Term:** {term}\n"
             f"**Location:** {loc}"
             f"{apply_line}"
@@ -126,13 +111,17 @@ def payloads(data: dict) -> list:
     items = sorted(
         data["items"],
         key=lambda it: (
-            infer_term(it, kind),
+            0 if is_priority(it.get("company") or "") else 1,
+            job_term(it, kind),
+            job_track(it),
             (it.get("company") or "").lower(),
             (it.get("role") or "").lower(),
         ),
     )
     n = len(items)
     noun = "listing" if n == 1 else "listings"
+    counts = Counter(job_term(it, kind) for it in items)
+    summary = " · ".join(f"{term} ({count})" for term, count in counts.most_common())
     out = []
     for i, it in enumerate(items):
         body = {
@@ -141,7 +130,7 @@ def payloads(data: dict) -> list:
             "allowed_mentions": {"parse": []},
         }
         if i == 0:
-            body["content"] = f"**{n} new {noun}**"
+            body["content"] = f"**{n} new {noun}**" + (f" · {summary}" if summary else "")
         out.append(body)
     return out
 

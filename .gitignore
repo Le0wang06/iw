@@ -3,3 +3,5 @@ current-*.md
 current-*.json
 new_jobs.json
 alert.md
+snapshots/previous-*
+
