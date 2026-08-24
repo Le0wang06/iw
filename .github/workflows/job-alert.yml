@@ -69,10 +69,8 @@ jobs:
 
       - name: Commit seen-state only
         if: ${{ steps.parse.outputs.total == '0' || steps.discord.outcome == 'success' }}
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add snapshots/seen.json snapshots/watch-version.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update board seen state"
-          git pull --rebase origin main
-          git push
+        run: >
+          bash .github/workflow-scripts/push_state.sh
+          "Update board seen state"
+          snapshots/seen.json
+          snapshots/watch-version.json
