@@ -2,7 +2,7 @@
 
 **InternMonkey** is a Discord bot that notifies you when a new intern or new-grad job listing is posted.
 
-Fast path is [cron-job.org](https://cron-job.org/en/) (`repository_dispatch`): **boards every 2 minutes**, **ATS every 5 minutes**. GitHub’s own schedule is an **hourly backup** if those pings stop. Overlapping runs share a concurrency group so extra pings wait instead of stacking.
+Fast path is [cron-job.org](https://cron-job.org/en/) (`repository_dispatch`): **boards every 2 minutes**, **ATS every 5 minutes**. GitHub’s own schedule is an **hourly backup** if those pings stop. Overlapping runs share a concurrency group so extra pings wait instead of stacking. Board fetches run in parallel and skip unchanged GitHub files via `ETag`.
 
 | Source | What you get |
 | --- | --- |

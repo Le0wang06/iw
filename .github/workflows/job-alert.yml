@@ -74,3 +74,4 @@ jobs:
           "Update board seen state"
           snapshots/seen.json
           snapshots/watch-version.json
+          snapshots/board-etags.json

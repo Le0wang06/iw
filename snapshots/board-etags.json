@@ -1,0 +1,58 @@
+{
+  "applyguy": {
+    "etag": "\"6be81d192f580a3737ce74d32550e837b8603578b53671161314bff7f581799d\"",
+    "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
+  },
+  "aprameyak": {
+    "etag": "\"05ab42113b121e63ac6bd0fde7a497b022d58a619534f64c4234020659524d74\"",
+    "url": "https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md"
+  },
+  "cvrve_ng": {
+    "etag": "\"de042eb1ee5633e64cdfa7f37d059c9f4a891bf0b99f20ae1e1f57b7d96c8212\"",
+    "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
+  },
+  "newgrad": {
+    "etag": "\"63f30b76bd9cb5d99d326ec834dce891398ee6ee8da3ba745fbf63c4c2feaa1e\"",
+    "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
+  },
+  "offseason": {
+    "etag": "\"4fa600043903ae3e43b8a31730102c3fcb0346779b05c848686aa217f253ad91\"",
+    "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
+  },
+  "speedy_ai": {
+    "etag": "\"109977231f87dda87f71075fdc38a5a761b0633e042e2f929a4ac65422f9aa2b\"",
+    "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/README.md"
+  },
+  "speedy_ai_ng": {
+    "etag": "\"b1ace78d736ed1877a4b3062aa37f1844380bab1d71ca4d1655522332665d4d4\"",
+    "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/NEW_GRAD_USA.md"
+  },
+  "speedy_swe": {
+    "etag": "\"d17d8f5b7be4b1de320ac75e139c0826726f8dcdcb3e9207994799eb26cc37e4\"",
+    "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/README.md"
+  },
+  "speedy_swe_ng": {
+    "etag": "\"c4ece3002c2e1883786a8261aeaa2f8aa38aaf91ab232a92b748fa5967a67f9e\"",
+    "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_USA.md"
+  },
+  "summer": {
+    "etag": "\"0a4223fb7dd78863ffc77303424960d5952172727925f70d6b48edf166caebce\"",
+    "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md"
+  },
+  "vansh": {
+    "etag": "\"032cd05ff2e8334a129b98ccfb0020e8d2486ba0b7d0dc4f1da1ddbe22113bdf\"",
+    "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/README.md"
+  },
+  "vansh_ng": {
+    "etag": "\"de042eb1ee5633e64cdfa7f37d059c9f4a891bf0b99f20ae1e1f57b7d96c8212\"",
+    "url": "https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/README.md"
+  },
+  "vansh_off": {
+    "etag": "\"f04d8fbd0f03eb52baac8440c53195edbb0c14addcdaef2430fce4b2979eafce\"",
+    "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
+  },
+  "zshah": {
+    "etag": "\"6a8cd842-30f8a\"",
+    "url": "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
+  }
+}
