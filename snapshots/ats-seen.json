@@ -450,6 +450,7 @@
 "d:nuclear promise x|ai developer co-op|kincardine",
 "d:nuro|software engineer, ai platform - intern|mountain view, california (hq)",
 "d:nuro|software engineer, ai platform - new grad|mountain view, california (hq)",
+"d:nvidia|ai research intern, tao multi-modal model development - 2026|2 locations",
 "d:nvidia|applied deep learning phd research intern, reinforcement learning for llms - fall 2026|us, ca, santa clara",
 "d:nvidia|applied research intern, nlp - fall 2026|us, ca, santa clara",
 "d:nvidia|nvidia 2027 internships: autonomous vehicles and robotics|us, ca, santa clara",
@@ -1273,5 +1274,6 @@
 "w:nvidia:/job/US-CA-Santa-Clara/NVIDIA-Spring-2027-Internships--Developer-and-Performance-Technology_JR2023499",
 "w:nvidia:/job/US-CA-Santa-Clara/PhD-Research-Intern--Generative-AI---2026_JR2016035",
 "w:nvidia:/job/US-CA-Santa-Clara/PhD-Software-Engineering-Intern--Decision-Intelligence---Fall-2026_JR2017522",
-"w:nvidia:/job/US-CA-Santa-Clara/Software-Engineering-Intern--Dynamo---Fall-2026_JR2022295"
+"w:nvidia:/job/US-CA-Santa-Clara/Software-Engineering-Intern--Dynamo---Fall-2026_JR2022295",
+"w:nvidia:/job/Vietnam-Hanoi/AI-Research-Intern--TAO-Multi-Modal-Model-Development---2026_JR2021301"
 ]
