@@ -43,6 +43,7 @@ jobs:
       - name: Ping Discord if new roles found
         id: discord
         if: ${{ steps.parse.outputs.total != '0' }}
+        continue-on-error: true
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
@@ -64,7 +65,7 @@ jobs:
           body: ${{ steps.parse.outputs.plain_body }}
 
       - name: Commit updated seen state
-        if: ${{ steps.parse.outputs.total == '0' || steps.discord.outcome == 'success' }}
+        if: ${{ !cancelled() && steps.parse.outcome == 'success' }}
         run: >
           bash .github/workflow-scripts/push_state.sh
           "Update ATS seen state"
