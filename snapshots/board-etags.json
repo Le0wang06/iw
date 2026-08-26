@@ -1,6 +1,6 @@
 {
   "applyguy": {
-    "etag": "\"2663a80cefc1bbd8cb30c38b97c486cddef5ddd29d23f43b79b5be5aebbf0a8f\"",
+    "etag": "\"3e43e68018f6947772ff3d2ffcae9e16451dcc72ced9e7a5f155320714b10e53\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -52,7 +52,7 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
   },
   "zshah": {
-    "etag": "\"6a8efb12-39056\"",
+    "etag": "\"6a8efb72-39056\"",
     "url": "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
   }
 }
