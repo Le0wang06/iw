@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
-    "etag": "\"957837c848e1a21437acfecc47163ac69e1b2b122fc06879ace1208e5a93ebc5\"",
+    "etag": "\"f2eab8c2d12869fe901e310ee464822ca1c7f2a9667f644079d3a06c3e4bcf1b\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
@@ -20,11 +20,11 @@
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
   },
   "speedy_ai": {
-    "etag": "\"37a4aaaa1ace80d95efcddb8998ce8b61303ec1d71c773728e604c9eb57488af\"",
+    "etag": "\"ee063913e3569cfdc035f54b493404bc156586b3304e60c5b17438b0c638af64\"",
     "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/README.md"
   },
   "speedy_ai_ng": {
-    "etag": "\"755740812ef16d5408eb9044d352ae4b28a7b293739e2291f165aab47a9e99ad\"",
+    "etag": "\"8d9e986418c8249ff97edd2ac2d5f8dad578a5b47729c5889e8ba5e7082cc748\"",
     "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "speedy_swe": {
@@ -32,7 +32,7 @@
     "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/README.md"
   },
   "speedy_swe_ng": {
-    "etag": "\"b3df0b0372dfe9c3f0310653972faa3173872f02ce882a85ba3c2cbd112a77ea\"",
+    "etag": "\"44805a4a1a8ca80fd324dd25aa5f1f76fb8a3fb50ff546e54fec2bef2777367e\"",
     "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "summer": {
