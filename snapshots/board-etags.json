@@ -1,6 +1,6 @@
 {
   "applyguy": {
-    "etag": "\"1f66e2b9f666536d970f23e782806da9f840fc6ea4a96042a06f5f1dc915da77\"",
+    "etag": "\"84cffebc0218a63dd238d2c0041edbf4e991a4a5eecd13595cf4643045d72cd9\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -28,7 +28,7 @@
     "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "speedy_swe": {
-    "etag": "\"c000e07ca4d8f822a45274aeb1c5ae4bc387f918d431dade5d5725f999e7c6cb\"",
+    "etag": "\"04c057c7754a2c66cf30b88896e293999a826994a9e83f21aa76419b34440ac4\"",
     "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/README.md"
   },
   "speedy_swe_ng": {
