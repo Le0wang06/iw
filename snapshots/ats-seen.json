@@ -533,6 +533,7 @@
 "d:nvidia|phd software engineering intern, decision intelligence - fall 2026|us, ca, santa clara",
 "d:nvidia|software engineering intern, dynamo - fall 2026|us, ca, santa clara",
 "d:nvidia|solution architect manager - intern program|2 locations",
+"d:nvidia|solutions architect, wwfo - new college graduate 2027|us, ca, santa clara",
 "d:nvidia|system software engineer, soc - new college graduate|2 locations",
 "d:nvidia|system software engineer, soc, new college graduate|2 locations",
 "d:offerup|software engineering intern - summer 2026 (hybrid @ bellevue, wa)|hybrid @ bellevue",
@@ -904,9 +905,11 @@
 "d:waymo|2027 summer intern, bs/ms, pipeline and test health engineer|san francisco, california,",
 "d:waymo|2027 summer intern, mba, operations planning|san francisco",
 "d:waymo|2027 summer intern, mba, operations planning|san francisco, ca,",
+"d:waymo|2027 summer intern, mba, operations planning|san francisco, california",
 "d:waymo|2027 summer intern, ms, software engineering, behavior test|san francisco, california,",
 "d:waymo|2027 summer intern, ms/phd, data science - commercialization testing|san francisco, california",
 "d:waymo|2027 summer intern, ms/phd, quantitative ux researcher, growth/international expansion|san francisco",
+"d:waymo|2027 summer intern, ms/phd, quantitative ux researcher, growth/international expansion|san francisco, california",
 "d:waymo|international creative studio lead|san francisco, ca, ; mountain view, ca, ; los angeles, ca,",
 "d:waymo|machine learning engineer perception llm/vlm (phd, new grad)|mountain view, ca ; san francisco, ca ;",
 "d:waymo|strategic partnerships development manager - international charging as a service|new york city, new york, ; washington, d.c.,",
@@ -1453,5 +1456,6 @@
 "w:nvidia:/job/US-CA-Santa-Clara/PhD-Research-Intern--Generative-AI---2026_JR2016035",
 "w:nvidia:/job/US-CA-Santa-Clara/PhD-Software-Engineering-Intern--Decision-Intelligence---Fall-2026_JR2017522",
 "w:nvidia:/job/US-CA-Santa-Clara/Software-Engineering-Intern--Dynamo---Fall-2026_JR2022295",
+"w:nvidia:/job/US-CA-Santa-Clara/Solutions-Architect--WWFO---New-College-Graduate-2027_JR2024999",
 "w:nvidia:/job/Vietnam-Hanoi/AI-Research-Intern--TAO-Multi-Modal-Model-Development---2026_JR2021301"
 ]
