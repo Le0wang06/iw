@@ -1,6 +1,6 @@
 {
   "applyguy": {
-    "etag": "\"3ff680fc025dd8d258f9e43819a8e1a4108085219b21824da5af9c51f7fa46c6\"",
+    "etag": "\"adc805a8fe0e5ef23764e87abf7a04710bbae4b71095c7dfd7af2851e119fcf8\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -16,7 +16,7 @@
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
-    "etag": "\"001b99e86361d88cbeff0a5c76ba32b305aaa178669159b4fd66eaab4b17b1d3\"",
+    "etag": "\"40cec052ee13fce696f21d744c7fa417a531f4c2603d64077578f026c8b4a9b3\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
   },
   "speedy_ai": {
@@ -36,7 +36,7 @@
     "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "summer": {
-    "etag": "\"1c43525463c6f70aa7a440518a647808fb49a452243d253c3ccc12637fb7c9df\"",
+    "etag": "\"d8c68e369106cbdd9c508ba0bae4615c3da4bed8b7f72af89087647b22552b77\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md"
   },
   "vansh": {
