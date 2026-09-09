@@ -1,6 +1,6 @@
 {
   "applyguy": {
-    "etag": "\"2027492b55fa0b7ce62ed4e5cfd7744a89e7b691d61483101fee71fb8e74814e\"",
+    "etag": "\"aca03812d992756e577383f1ee0ada164389636c04c021b87120a077a7851126\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
-    "etag": "\"6ed975f93b816fb18c89229c39668b584f553dcab05274f21d41e8af92866846\"",
+    "etag": "\"7cfa32c5da213e7bb132927d94506804af32a038c29bf0f4f128f778c212443f\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
