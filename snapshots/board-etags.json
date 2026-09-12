@@ -1,6 +1,6 @@
 {
   "applyguy": {
-    "etag": "\"caf485895dea58d84b7c0785c2f31eb007da8a6ed6c46d2aed9cc71e85b91d41\"",
+    "etag": "\"a927fbb7dc90ee463e599540ef7c45db18ba440c9ff466c91f8dcf1dc38df9ca\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -9,7 +9,7 @@
   },
   "cvrve_ng": {
     "etag": "\"de042eb1ee5633e64cdfa7f37d059c9f4a891bf0b99f20ae1e1f57b7d96c8212\"",
-    "url": "https://raw.githubusercontent.com/cvrve/New-Grad/main/README.md"
+    "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
     "etag": "\"dc584b5b74b9ceaa2088145516e9254a58d89a96d8972c670962c5b4a08b98ce\"",
