@@ -1,6 +1,6 @@
 {
   "applyguy": {
-    "etag": "\"9578f805aeb8261d54c0516d1df2d24e73d2f3531907167230f9d2349fb01bfd\"",
+    "etag": "\"c68a2d79a2dd154585a41ead71ba5c218c86ff28a38b0f2f229c211de57f3670\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -36,7 +36,7 @@
     "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "summer": {
-    "etag": "\"796f82ef733df45e43b9ef7b83f76752664de8d14e8b58e7688f815fcc54002e\"",
+    "etag": "\"a733c3f52867489c301987247e17e43f116324b3145fd39be4c7946702ca2319\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md"
   },
   "vansh": {
