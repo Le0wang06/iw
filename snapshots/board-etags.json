@@ -1,6 +1,6 @@
 {
   "applyguy": {
-    "etag": "\"6290a225fc30dd941a3f112bda307f6066cb895192d91a3a976714e7e6179ccf\"",
+    "etag": "\"2bcd89ec23701c99a64de57b58a897b235b7e4376fe23eea393ba5908eb34deb\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -16,7 +16,7 @@
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
-    "etag": "\"e58177149f33c627c316ae6ab045b261c62634adcd5bc5ff1a92f3c2e432a5fa\"",
+    "etag": "\"1148f408bd762777c17fd82353c2e453cf55597c7e3eb6522b11794cbc2670a7\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
   },
   "speedy_ai": {
@@ -52,7 +52,7 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
   },
   "zshah": {
-    "etag": "\"6ab0e624-aff12\"",
+    "etag": "\"6ab0e625-aff12\"",
     "url": "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
   }
 }
