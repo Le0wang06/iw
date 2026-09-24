@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
-    "etag": "\"4cd0da654bf61701f8584aca3916d5564858bbdcfb4d0238a22e4325f9a45c8b\"",
+    "etag": "\"2105bd47efad17ff2f919a74fa60b2cfd3c3301a1f743d4724afa442ba2d98cc\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
@@ -52,7 +52,7 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
   },
   "zshah": {
-    "etag": "\"6ab45443-bfdb1\"",
+    "etag": "\"6ab45442-bfdb1\"",
     "url": "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
   }
 }
