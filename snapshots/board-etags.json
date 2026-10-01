@@ -1,6 +1,6 @@
 {
   "ambicuity": {
-    "etag": "W/\"6abdb882-69ee89\"",
+    "etag": "W/\"6abdbefc-6cb652\"",
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
@@ -20,7 +20,7 @@
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
-    "etag": "\"9471aaa8eb10d87d84407f621d987a7f540a917304395d3e0c14eba472b9de12\"",
+    "etag": "\"01a658d61a80c42e282b46859e374891877222ac9aa78adaa1d17e07c9cde771\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
   },
   "speedy_ai": {
