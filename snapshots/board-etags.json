@@ -4,7 +4,7 @@
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
-    "etag": "\"e28dc836124d534e31b74a7443b427c956f9717172abb637070e1b35a1362ded\"",
+    "etag": "\"9221da32a39ed2aa8a29c2e351a158cd5c410a45604d5e3057a6965b89a13814\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -16,7 +16,7 @@
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
-    "etag": "\"2f0f4229a846567041de69a93b47b359f4ec00e4a5e136bfc01363076c789417\"",
+    "etag": "\"d4194bcfe7e59e64dece4934cb4f2ab96787bdb182ac03d9682c34ec84027cea\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
