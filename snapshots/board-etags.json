@@ -4,7 +4,7 @@
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
-    "etag": "\"95bf02f7745ebb2d9fd3b08d52026dcb93b4fa933a9d81519802ae20c24f1185\"",
+    "etag": "\"c8fd4d8ef54be00ff288e54f0e8a558a8acf3513cec20d649a93fd372fbec332\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -56,7 +56,7 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
   },
   "zshah": {
-    "etag": "\"6acfdf39-e68e9\"",
+    "etag": "\"6acfdf73-e68e9\"",
     "url": "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
   }
 }
