@@ -1,6 +1,6 @@
 {
   "ambicuity": {
-    "etag": "W/\"6ae49cf1-1146d82\"",
+    "etag": "W/\"6ae49cf0-1146d82\"",
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md"
   },
   "cvrve_ng": {
-    "etag": "\"591936813c54debcfd82d24c68797ed5fdfe1fad1976e43169c7e54acc901a72\"",
+    "etag": "\"9d6b86707be1896615af687e6dd55eafa9cf1feb8692cf7ab7e85fcbb1028213\"",
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
@@ -48,11 +48,11 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/README.md"
   },
   "vansh_ng": {
-    "etag": "\"591936813c54debcfd82d24c68797ed5fdfe1fad1976e43169c7e54acc901a72\"",
+    "etag": "\"9d6b86707be1896615af687e6dd55eafa9cf1feb8692cf7ab7e85fcbb1028213\"",
     "url": "https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/README.md"
   },
   "vansh_off": {
-    "etag": "\"e8832d232d77b676239cebf15cc93430003072604677552e52eeef42d50e6e99\"",
+    "etag": "\"ccd96258ee1185e91e4579fdb78df6003f3a41ef49dee2d17aab585efe519956\"",
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
   },
   "zshah": {
