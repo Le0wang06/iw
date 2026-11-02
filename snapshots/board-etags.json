@@ -20,15 +20,15 @@
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
-    "etag": "\"6222d91abd9b1f3f7e7e899800c1d5af4b681356f648b32915216c145f4af97c\"",
+    "etag": "\"eb24d22128daed1b660b12849c2e71078b53e60fb01f6fb90ad47144622f3bed\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
   },
   "speedy_ai": {
-    "etag": "\"efc258615c7bd05d31d7cbbbb3661d4c8d5288ad69605a1a646e28977d7b5908\"",
+    "etag": "\"a803ffad4e1a0bf943e7ce641766b9629a93eb67d6b2c4a7d2f9cb9292c65ded\"",
     "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/README.md"
   },
   "speedy_ai_ng": {
-    "etag": "\"1945fc2a6c856ce41f45621afed41c603f973025c80e588492d8cc939a17cc40\"",
+    "etag": "\"336772801cafd583807bff5ebebe43e418213e904698f7d84ba047fc9aa3c9c2\"",
     "url": "https://raw.githubusercontent.com/speedyapply/2027-AI-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "speedy_swe": {
