@@ -4,7 +4,7 @@
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
-    "etag": "\"e8120eb07bfa01aa1a93981bfd544e67d5c63a21acde94af51db074d013ca0c5\"",
+    "etag": "\"e4607df9165f30f85c94c65f1cec2efbdbb58bd2c3726bb91e8515b77e249801\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md"
   },
   "cvrve_ng": {
-    "etag": "\"801a9ba2967e38e766fea8e5e07a77fe89edd85dfc4108926f3a30381c4a07f8\"",
+    "etag": "\"4d0eaae983d535ed87595dcb8097692de94451a5adcaab4f8591939345b959e6\"",
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
@@ -20,7 +20,7 @@
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
-    "etag": "\"9fd440895953cd20241b8068f1c6af1b35e0d9c32f8ecd4f009e5c7dff5f9ad4\"",
+    "etag": "\"55801265448f1244dc4db9a987b20cae04234b90ed8019e9a6a9148ce37382a1\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
   },
   "speedy_ai": {
@@ -40,7 +40,7 @@
     "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "summer": {
-    "etag": "\"1b9c4b218fc6987accefcf4186f6c3483da4b3defb6b7f0a15c16661be056601\"",
+    "etag": "\"1e9ebdffa0e233247493c78525485c5fb4a59c4434f7f79c871ec4cdb00f5eef\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md"
   },
   "vansh": {
@@ -48,7 +48,7 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/README.md"
   },
   "vansh_ng": {
-    "etag": "\"801a9ba2967e38e766fea8e5e07a77fe89edd85dfc4108926f3a30381c4a07f8\"",
+    "etag": "\"4d0eaae983d535ed87595dcb8097692de94451a5adcaab4f8591939345b959e6\"",
     "url": "https://raw.githubusercontent.com/vanshb03/New-Grad-2027/dev/README.md"
   },
   "vansh_off": {
