@@ -4,7 +4,7 @@
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
-    "etag": "\"dbe59ada3000fb5e05ad4fd3042eeee772c8104035c5b1fbc0d9cf54640326ea\"",
+    "etag": "\"e8120eb07bfa01aa1a93981bfd544e67d5c63a21acde94af51db074d013ca0c5\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md"
   },
   "cvrve_ng": {
-    "etag": "\"bb71efd6ddd881d429c049531da14053d10a657ba8940b1765de04426bb92038\"",
+    "etag": "\"801a9ba2967e38e766fea8e5e07a77fe89edd85dfc4108926f3a30381c4a07f8\"",
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
