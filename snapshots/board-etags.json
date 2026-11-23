@@ -4,11 +4,11 @@
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
-    "etag": "\"d06c2a36d39a5cb0c2aee37e8eb15ff5a1838a2a7a98ed48ceb32a509da9640d\"",
+    "etag": "\"56b906e3223eaffc02de82259ccff84313e7b08905975cf112615b84f3f50018\"",
     "url": "https://raw.githubusercontent.com/ApplyGuy/2027-Internships/main/data/internships.json"
   },
   "aprameyak": {
-    "etag": "\"d5e69b7516205535e969fc74b6a88241b9ddeaeda7fa9d6855eac0118b652257\"",
+    "etag": "\"ef04fb31b279721e8d19814ef4772c91730aeb46a25b06d344746780eee05a9c\"",
     "url": "https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md"
   },
   "cvrve_ng": {
@@ -16,11 +16,11 @@
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
-    "etag": "\"be339d9f041d00d4a4533876b300db245eb34ce9a45c9aba3c851cec34b72d10\"",
+    "etag": "\"22227277acbeeef9e2653dfa1877b3cb50db714094ec516d1b79ee796e4d86b7\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
-    "etag": "\"e003fff051bdbc717907f7d44ce9818fa6d07ccff945235272e552e8910ad58e\"",
+    "etag": "\"49c63f7f1bda17b97fde5eb6907ef5dc8bc42b14e8b6131a3927d65f76ff474d\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README-Off-Season.md"
   },
   "speedy_ai": {
@@ -40,7 +40,7 @@
     "url": "https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_USA.md"
   },
   "summer": {
-    "etag": "\"775e35ff5d88487e0f10150b792f83e833835550b79fe9eddb3bd0c6250376d4\"",
+    "etag": "\"fdf5851bc5d0877eeaeb4c465cbb92ddc48c25699fa1a7b18229c7703202a210\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/Summer2027-Internships/dev/README.md"
   },
   "vansh": {
@@ -56,7 +56,7 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
   },
   "zshah": {
-    "etag": "\"6b03aea7-ec70c\"",
+    "etag": "\"6b03aea8-ec70c\"",
     "url": "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
   }
 }
