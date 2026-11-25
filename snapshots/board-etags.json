@@ -1,6 +1,6 @@
 {
   "ambicuity": {
-    "etag": "W/\"6b06f301-f63bae\"",
+    "etag": "W/\"6b06f302-f63bae\"",
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
@@ -12,7 +12,7 @@
     "url": "https://raw.githubusercontent.com/aprameyak/2027-tech-jobs/main/README.md"
   },
   "cvrve_ng": {
-    "etag": "\"7e899790cfe2faef98eecac0945d3e0c81b95474d0c979c797a6361e528157a4\"",
+    "etag": "\"946007d5e1291db63163b2fc85170a0f8f7ef45e301344a6323386b37b04409a\"",
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
@@ -56,7 +56,7 @@
     "url": "https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/dev/OFFSEASON_README.md"
   },
   "zshah": {
-    "etag": "\"6b06605c-ed1a7\"",
+    "etag": "\"6b06605b-ed1a7\"",
     "url": "https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json"
   }
 }
