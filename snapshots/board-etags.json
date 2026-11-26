@@ -1,6 +1,6 @@
 {
   "ambicuity": {
-    "etag": "W/\"6b082481-fb1109\"",
+    "etag": "W/\"6b082482-fb1109\"",
     "url": "https://ambicuity.github.io/New-Grad-Jobs/jobs.json"
   },
   "applyguy": {
@@ -16,7 +16,7 @@
     "url": "https://raw.githubusercontent.com/cvrve/New-Grad/dev/README.md"
   },
   "newgrad": {
-    "etag": "\"9c0450cd2a41ef46b49ff625612e1739dea1021ef141a46d8c135eef106431ec\"",
+    "etag": "\"1690ca1a1283da1de23d4c9df493d5418267bd889f585ce325bde9ec98669ca6\"",
     "url": "https://raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/README.md"
   },
   "offseason": {
